@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@keyframes sc-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes sc-fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sc-hero-reveal {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.sc-fade-up {
+  animation: sc-fade-up 0.38s ease both;
+}
+
+.sc-reveal {
+  animation: sc-hero-reveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.sc-reveal-1 { animation-delay: 0.06s; }
+.sc-reveal-2 { animation-delay: 0.14s; }
+.sc-reveal-3 { animation-delay: 0.22s; }
+.sc-reveal-4 { animation-delay: 0.32s; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans, Arial, Helvetica, sans-serif);
+}
