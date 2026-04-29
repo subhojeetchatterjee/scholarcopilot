@@ -32,3 +32,6 @@ Thumbs.db
 # Misc
 *.log
 .cache/
+
+# Project-specific
+CLAUDE.md
