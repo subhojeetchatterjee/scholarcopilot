@@ -9,6 +9,7 @@ export default function ThemeToggle() {
     const stored = localStorage.getItem("sc-theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const isDark = stored ? stored === "dark" : prefersDark;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reading localStorage is browser-only; useEffect is the correct SSR-safe location
     setDark(isDark);
     document.documentElement.classList.toggle("dark", isDark);
   }, []);

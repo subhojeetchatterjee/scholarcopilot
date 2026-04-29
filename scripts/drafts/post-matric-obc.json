@@ -1,0 +1,28 @@
+{
+  "name": "Post-Matric Scholarship for Other Backward Classes (National)",
+  "provider": "Ministry of Social Justice and Empowerment, Government of India",
+  "official_url": "https://scholarships.gov.in",
+  "source_url": "https://scholarships.gov.in",
+  "source_name": "National Scholarship Portal — Post-Matric Scholarship for OBC",
+  "deadline": "2025-11-30",
+  "states_allowed": ["ALL"],
+  "min_marks": null,
+  "income_limit": 150000,
+  "category_allowed": ["OBC"],
+  "gender_allowed": ["ALL"],
+  "disability_requirement": "not_applicable",
+  "course_levels": ["Class 11", "Class 12", "UG", "PG", "Diploma"],
+  "summary": "Post-matric scholarship for OBC students pursuing education from Class 11 level onwards. Family income ceiling ₹1 lakh per annum for central-list OBC (some states use ₹1.5 lakh). Centrally sponsored via the National Scholarship Portal.",
+  "docs_required": [
+    "Aadhaar Card",
+    "OBC Certificate (non-creamy layer, government-issued)",
+    "Income Certificate (family income)",
+    "Bank Account Details",
+    "Previous Year Marksheet",
+    "Institution Enrollment Proof"
+  ],
+  "source_type": "government",
+  "source_note": "Centrally sponsored scheme for OBC students, administered via NSP. Income limit varies between ₹1 lakh (central list) and ₹1.5 lakh (some state interpretations).",
+  "verification_note": "income_limit is highly ambiguous: the central scheme lists ₹1 lakh but many state NSP portals show ₹1.5 lakh; set to 150000 as a conservative upper bound — reviewer must verify the current-cycle figure on NSP. No minimum marks requirement nationally — min_marks set to null. Deadline is approximate; verify on NSP each cycle. Non-creamy layer certificate requirement is standard but cannot be checked by the match engine.",
+  "ambiguous_fields": ["income_limit", "deadline", "docs_required"]
+}

@@ -34,6 +34,11 @@ export type InstitutionType =
 
 export type SourceType = "government" | "ngo" | "private" | "institution";
 
+// "verified"    → criteria manually confirmed against the official source URL
+// "needs_review"→ real scholarship added to staging; awaits human spot-check
+// "mock"        → hackathon placeholder; do not treat as authoritative
+export type VerificationStatus = "verified" | "needs_review" | "mock";
+
 // ── Student profile ───────────────────────────────────────────────────────────
 
 export interface StudentProfile {
@@ -58,22 +63,31 @@ export interface StudentProfile {
 // ── Scholarship record ────────────────────────────────────────────────────────
 
 export interface Scholarship {
+  // ── Core fields (required by match engine) ────────────────────────────────
   id: string;
   name: string;
   provider: string;
-  official_url: string;
-  deadline: string; // ISO date YYYY-MM-DD
-  states_allowed: string[]; // ["ALL"] means no state restriction
+  official_url: string;        // landing page shown to students — may be root domain
+  deadline: string;            // ISO date YYYY-MM-DD
+  states_allowed: string[];    // ["ALL"] means no state restriction
   min_marks: number | null;
   income_limit: number | null; // annual family income ceiling in INR
-  category_allowed: string[]; // ["ALL"] means open to all
-  gender_allowed: string[]; // ["ALL"] means open to all genders
+  category_allowed: string[];  // ["ALL"] means open to all
+  gender_allowed: string[];    // ["ALL"] means open to all genders
   disability_requirement: "required" | "preferred" | "not_applicable";
   course_levels: CourseLevel[];
   summary: string;
   docs_required: string[];
   source_type: SourceType;
-  source_note: string;
+  source_note: string;         // human-readable provenance note shown in the UI
+
+  // ── Verification metadata (optional; absent on legacy mock entries) ───────
+  verification_status?: VerificationStatus;
+  source_url?: string;         // exact deep-link where criteria were verified
+  source_name?: string;        // authoritative source document or portal name
+  last_verified_at?: string;   // ISO date YYYY-MM-DD of last manual spot-check
+  verification_note?: string;  // free-form notes on ambiguous or provisional criteria
+  ambiguous_fields?: string[]; // field names whose values could not be confirmed exactly
 }
 
 // ── Match result ──────────────────────────────────────────────────────────────

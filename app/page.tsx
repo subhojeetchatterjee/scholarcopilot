@@ -1,4 +1,12 @@
 import Link from "next/link";
+import type { Scholarship } from "@/types";
+import rawScholarships from "@/data/scholarships.json";
+
+const _scholarships = rawScholarships as unknown as Scholarship[];
+const _verifiedCount = _scholarships.filter(
+  (s) => s.verification_status === "verified"
+).length;
+const _totalCount = _scholarships.length;
 
 // ── Data (preserved verbatim from previous version) ───────────────────────────
 
@@ -82,10 +90,10 @@ const TRUST = [
     body: 'ScholarCopilot uses only the information you provide. Missing fields are shown as "insufficient data" — never inferred or guessed.',
   },
   {
-    title: "Curated demo dataset",
-    body: "This is a hackathon demo with a curated mock dataset based on typical public scholarship criteria. It is not live or scraped data.",
+    title: "Progressively verified dataset",
+    body: `${_verifiedCount} of ${_totalCount} scholarships have been manually verified against official government sources. The remaining records are based on official scheme descriptions and are being reviewed progressively. Always confirm eligibility on the official scholarship page before applying.`,
   },
-] as const;
+];
 
 // ── Sections ──────────────────────────────────────────────────────────────────
 

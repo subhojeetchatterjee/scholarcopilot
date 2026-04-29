@@ -1,0 +1,28 @@
+{
+  "name": "Pratibha Kiran Scholarship — Madhya Pradesh",
+  "provider": "Higher Education Department, Government of Madhya Pradesh",
+  "official_url": "https://scholarshipportal.mp.nic.in",
+  "source_url": "https://scholarshipportal.mp.nic.in",
+  "source_name": "MP Scholarship Portal — Pratibha Kiran scheme",
+  "deadline": "2025-12-31",
+  "states_allowed": ["Madhya Pradesh"],
+  "min_marks": 60,
+  "income_limit": null,
+  "category_allowed": ["ALL"],
+  "gender_allowed": ["Female"],
+  "disability_requirement": "not_applicable",
+  "course_levels": ["UG"],
+  "summary": "Merit scholarship for girls from urban areas of Madhya Pradesh who scored 60% or above in MP Board Class 12 exams and are enrolled in a UG degree programme. Provides ₹5,000 per year. No income ceiling. Administered by the MP Higher Education Department.",
+  "docs_required": [
+    "Aadhaar Card",
+    "MP Domicile Certificate",
+    "MP Board Class 12 Marksheet (60%+)",
+    "Urban Area Residence Proof",
+    "Institution Enrollment Certificate (UG)",
+    "Bank Account Details"
+  ],
+  "source_type": "government",
+  "source_note": "State scheme administered via scholarshipportal.mp.nic.in. Restricted to girls from urban areas of Madhya Pradesh. Replaces mock entry sc-036 (which had incorrect min_marks of 70%).",
+  "verification_note": "min_marks of 60% is the standard cited threshold for Pratibha Kiran — the mock record incorrectly had 70%. No income ceiling — income_limit is null. Urban area restriction applies but cannot be verified by the match engine. Deadline is approximate; verify on the MP scholarship portal for the current academic year cycle. course_levels is UG only — the scheme targets students newly entering UG after Class 12.",
+  "ambiguous_fields": ["deadline", "docs_required"]
+}

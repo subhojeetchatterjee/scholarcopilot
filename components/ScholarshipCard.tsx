@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { Scholarship, MatchResult, MatchStatus } from "@/types";
+import VerificationBadge from "@/components/VerificationBadge";
 
 interface Props {
   scholarship: Scholarship;
@@ -289,6 +290,11 @@ export default function ScholarshipCard({ scholarship, result }: Props) {
           ))}
         </div>
       )}
+
+      {/* ── Verification status ─────────────────────────────────────────────── */}
+      <div>
+        <VerificationBadge status={scholarship.verification_status} />
+      </div>
     </article>
   );
 }

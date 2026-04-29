@@ -1,0 +1,28 @@
+{
+  "name": "Post-Matric Scholarship for Scheduled Castes (National)",
+  "provider": "Ministry of Social Justice and Empowerment, Government of India",
+  "official_url": "https://scholarships.gov.in",
+  "source_url": "https://scholarships.gov.in",
+  "source_name": "National Scholarship Portal — Post-Matric Scholarship for SC",
+  "deadline": "2025-11-30",
+  "states_allowed": ["ALL"],
+  "min_marks": null,
+  "income_limit": 250000,
+  "category_allowed": ["SC"],
+  "gender_allowed": ["ALL"],
+  "disability_requirement": "not_applicable",
+  "course_levels": ["Class 11", "Class 12", "UG", "PG", "Diploma"],
+  "summary": "Post-matric scholarship for Scheduled Caste students pursuing education at Class 11 level and above, with family income up to ₹2.5 lakh per annum. Centrally sponsored and distributed via states/UTs through the National Scholarship Portal.",
+  "docs_required": [
+    "Aadhaar Card",
+    "SC Caste Certificate (government-issued)",
+    "Income Certificate (family income ≤ ₹2.5 lakh)",
+    "Bank Account Details",
+    "Previous Year Marksheet",
+    "Institution Enrollment Proof"
+  ],
+  "source_type": "government",
+  "source_note": "Centrally sponsored scheme administered via NSP. States disburse funds; exact amounts and additional eligibility conditions vary by state.",
+  "verification_note": "No minimum marks requirement at the national level — min_marks set to null. Income limit of ₹2.5 lakh is the standard NSP-listed ceiling for this scheme. Deadline is approximate (typically October–November); verify current cycle on NSP. State-specific sub-conditions (e.g. Maharashtra may require 50% marks) cannot be captured in a single national record.",
+  "ambiguous_fields": ["deadline", "docs_required"]
+}

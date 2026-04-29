@@ -1,0 +1,405 @@
+[
+  {
+    "id": "sc-037",
+    "name": "Central Sector Scheme of Scholarships for College and University Students",
+    "provider": "Ministry of Education, Government of India",
+    "official_url": "https://scholarships.gov.in",
+    "source_url": "https://scholarships.gov.in",
+    "source_name": "National Scholarship Portal — Central Sector Scheme (CSS)",
+    "deadline": "2025-10-31",
+    "states_allowed": [
+      "ALL"
+    ],
+    "min_marks": 80,
+    "income_limit": 800000,
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
+    "disability_requirement": "not_applicable",
+    "course_levels": [
+      "UG",
+      "PG"
+    ],
+    "summary": "Merit-cum-means scholarship for students who scored in the top 20 percentile of their state board Class 12 examination, pursuing regular (non-professional) UG or PG courses at government colleges and universities. Awards ₹12,000/year at UG level and ₹20,000/year at PG level.",
+    "docs_required": [
+      "Aadhaar Card",
+      "Class 12 Marksheet",
+      "Income Certificate (family income)",
+      "Bank Account Details (student's own account)",
+      "Institution Enrollment Certificate"
+    ],
+    "source_type": "government",
+    "source_note": "Centrally administered by Ministry of Education via National Scholarship Portal (NSP). Replaces mock entry sc-001 which had incorrect income limit of ₹4.5L.",
+    "verification_note": "[DEADLINE STALE — April 2026] The deadline field records the 2025 cycle. Before promoting, open the source_url and confirm the 2025-26 or 2026-27 cycle deadline. Do not promote with a past deadline. Income limit: ₹8 lakh per annum (family) — well-established in NSP guidelines. min_marks set to 80% as a reasonable proxy for 'top 20 percentile'; actual state-board cut-offs vary and are published by each board separately. Deadline is approximate (typically September–October each year); reviewer must confirm current cycle date on NSP. Whether an Income Certificate is required has changed across cycles — verify in current-year instructions.",
+    "ambiguous_fields": [
+      "min_marks",
+      "deadline",
+      "docs_required"
+    ],
+    "verification_status": "needs_review",
+    "last_verified_at": "2026-04-29"
+  },
+  {
+    "id": "sc-039",
+    "name": "Swami Vivekananda Merit-cum-Means Scholarship",
+    "provider": "Higher Education Department, Government of West Bengal",
+    "official_url": "https://svmcm.wbhed.gov.in",
+    "source_url": "https://svmcm.wbhed.gov.in",
+    "source_name": "SVMCM official portal — West Bengal Higher Education Department",
+    "deadline": "2025-11-30",
+    "states_allowed": [
+      "West Bengal"
+    ],
+    "min_marks": 75,
+    "income_limit": 250000,
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
+    "disability_requirement": "not_applicable",
+    "course_levels": [
+      "Class 11",
+      "Class 12",
+      "UG",
+      "PG"
+    ],
+    "summary": "Merit-cum-means scholarship for West Bengal domicile students pursuing education from Class 11 to PG level, awarded on academic merit with family income criterion. Administered by the West Bengal Higher Education Department.",
+    "docs_required": [
+      "Aadhaar Card",
+      "West Bengal Domicile/Residence Certificate",
+      "Income Certificate (family income)",
+      "Previous Year Marksheet",
+      "Bank Account Details",
+      "Institution Enrollment Proof"
+    ],
+    "source_type": "government",
+    "source_note": "State scholarship administered through svmcm.wbhed.gov.in. West Bengal domicile required.",
+    "verification_note": "[DEADLINE STALE — April 2026] The deadline field records the 2025 cycle. Before promoting, open the source_url and confirm the 2025-26 or 2026-27 cycle deadline. Do not promote with a past deadline. min_marks of 75% and income_limit of ₹2.5 lakh are cited in multiple references but reviewer must verify exact current thresholds on the SVMCM portal — state scholarship criteria change with each academic year notification. Domicile requirement (West Bengal) applies but cannot be fully validated by the match engine (which only checks state field). Verify exact deadline window; the portal typically opens for fresh applications in August–September.",
+    "ambiguous_fields": [
+      "min_marks",
+      "income_limit",
+      "deadline",
+      "docs_required"
+    ],
+    "verification_status": "needs_review",
+    "last_verified_at": "2026-04-29"
+  },
+  {
+    "id": "sc-040",
+    "name": "Maharashtra Government Post-SSC Scholarship (MahaDBT)",
+    "provider": "Social Justice and Special Assistance Department, Government of Maharashtra",
+    "official_url": "https://mahadbt.maharashtra.gov.in",
+    "source_url": "https://mahadbt.maharashtra.gov.in",
+    "source_name": "MahaDBT official portal — Post-SSC Scholarship schemes",
+    "deadline": "2025-11-30",
+    "states_allowed": [
+      "Maharashtra"
+    ],
+    "min_marks": 50,
+    "income_limit": 250000,
+    "category_allowed": [
+      "SC",
+      "ST",
+      "OBC",
+      "NT"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
+    "disability_requirement": "not_applicable",
+    "course_levels": [
+      "Class 11",
+      "Class 12",
+      "UG"
+    ],
+    "summary": "Post-SSC scholarships for students belonging to SC, ST, OBC, and Nomadic Tribe (NT) categories with Maharashtra domicile, studying at Class 11 level and above. Administered via the MahaDBT portal.",
+    "docs_required": [
+      "Aadhaar Card",
+      "Maharashtra Domicile Certificate",
+      "Caste Certificate (SC/ST/OBC/NT, Maharashtra-issued)",
+      "Income Certificate (family income)",
+      "Previous Year Marksheet",
+      "Bank Account Details",
+      "Institution Enrollment Proof"
+    ],
+    "source_type": "government",
+    "source_note": "Multiple sub-schemes under MahaDBT for different categories. This record covers the general post-SSC scholarship umbrella. Maharashtra domicile is required.",
+    "verification_note": "[DEADLINE STALE — April 2026] The deadline field records the 2025 cycle. Before promoting, open the source_url and confirm the 2025-26 or 2026-27 cycle deadline. Do not promote with a past deadline. MahaDBT covers several distinct post-SSC schemes for different categories; this record is a generalisation. Reviewer should verify exact scheme names, income limits, and marks cut-offs per category on mahadbt.maharashtra.gov.in — each category (SC, ST, OBC, NT/DNT/SBC) may have different income ceilings. min_marks of 50% is a common threshold but varies by scheme. Deadline window typically September–January on MahaDBT portal.",
+    "ambiguous_fields": [
+      "min_marks",
+      "income_limit",
+      "deadline",
+      "docs_required",
+      "category_allowed"
+    ],
+    "verification_status": "needs_review",
+    "last_verified_at": "2026-04-29"
+  },
+  {
+    "id": "sc-041",
+    "name": "AICTE Pragati Scholarship for Girls",
+    "provider": "All India Council for Technical Education (AICTE)",
+    "official_url": "https://www.aicte-india.org/bureaus/rifd/pragati",
+    "source_url": "https://www.aicte-india.org/bureaus/rifd/pragati",
+    "source_name": "AICTE RIFD — Pragati Scholarship official page",
+    "deadline": "2025-10-31",
+    "states_allowed": [
+      "ALL"
+    ],
+    "min_marks": null,
+    "income_limit": 800000,
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "Female"
+    ],
+    "disability_requirement": "not_applicable",
+    "course_levels": [
+      "UG",
+      "Diploma"
+    ],
+    "summary": "Scholarship exclusively for female students (one per family) admitted to AICTE-approved technical degree or diploma programmes. Provides ₹50,000/year to support tuition fees and incidental expenses. Family income ceiling ₹8 lakh per annum.",
+    "docs_required": [
+      "Aadhaar Card",
+      "Income Certificate (family income ≤ ₹8 lakh)",
+      "AICTE Institution Admission Letter / Enrollment Proof",
+      "Bank Account Details (student's own account)",
+      "Class 12 / Diploma Marksheet"
+    ],
+    "source_type": "government",
+    "source_note": "Centrally administered by AICTE RIFD bureau via the National Scholarship Portal (NSP). Targets first-year female students in technical programmes.",
+    "verification_note": "[DEADLINE STALE — April 2026] The deadline field records the 2025 cycle. Before promoting, open the source_url and confirm the 2025-26 or 2026-27 cycle deadline. Do not promote with a past deadline. No minimum marks criterion listed on the AICTE page — min_marks set to null. Deadline is approximate (typically September–October); verify current cycle on NSP or AICTE portal. One-per-family restriction may not be enforceable by the match engine. Income limit of ₹8 lakh is well-documented.",
+    "ambiguous_fields": [
+      "deadline",
+      "docs_required"
+    ],
+    "verification_status": "needs_review",
+    "last_verified_at": "2026-04-29"
+  },
+  {
+    "id": "sc-042",
+    "name": "INSPIRE Scholarship for Higher Education (SHE)",
+    "provider": "Department of Science and Technology (DST), Government of India",
+    "official_url": "https://online-inspire.gov.in",
+    "source_url": "https://online-inspire.gov.in",
+    "source_name": "INSPIRE online portal — SHE scheme (DST)",
+    "deadline": "2025-11-30",
+    "states_allowed": [
+      "ALL"
+    ],
+    "min_marks": 60,
+    "income_limit": null,
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
+    "disability_requirement": "not_applicable",
+    "course_levels": [
+      "UG",
+      "PG"
+    ],
+    "summary": "Scholarship for students pursuing natural and basic sciences (Physics, Chemistry, Mathematics, Biology, Statistics, etc.) at UG/PG level, awarded to top performers in Class 12 board exams. Provides ₹80,000/year (UG) and ₹1,12,000/year (PG). No income ceiling.",
+    "docs_required": [
+      "Aadhaar Card",
+      "Class 12 Marksheet (board merit proof)",
+      "Admission Letter for natural/basic science course",
+      "Bank Account Details (student's own account)",
+      "Institution Enrollment Certificate"
+    ],
+    "source_type": "government",
+    "source_note": "DST INSPIRE-SHE is a merit-only scheme with no income criterion. Administered via online-inspire.gov.in.",
+    "verification_note": "[DEADLINE STALE — April 2026] The deadline field records the 2025 cycle. Before promoting, open the source_url and confirm the 2025-26 or 2026-27 cycle deadline. Do not promote with a past deadline. No income limit — income_limit set to null. The 60% min_marks is a commonly cited threshold but actual eligibility is based on board-exam merit rank (top 1% nationally or state board toppers); the match engine cannot replicate rank-based logic so 60% is used as a proxy. Deadline is approximate; verify on the INSPIRE portal each cycle. Natural/basic sciences subject restriction cannot be checked by the match engine.",
+    "ambiguous_fields": [
+      "min_marks",
+      "deadline",
+      "docs_required"
+    ],
+    "verification_status": "needs_review",
+    "last_verified_at": "2026-04-29"
+  },
+  {
+    "id": "sc-044",
+    "name": "Post-Matric Scholarship for Other Backward Classes (National)",
+    "provider": "Ministry of Social Justice and Empowerment, Government of India",
+    "official_url": "https://scholarships.gov.in",
+    "source_url": "https://scholarships.gov.in",
+    "source_name": "National Scholarship Portal — Post-Matric Scholarship for OBC",
+    "deadline": "2025-11-30",
+    "states_allowed": [
+      "ALL"
+    ],
+    "min_marks": null,
+    "income_limit": 150000,
+    "category_allowed": [
+      "OBC"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
+    "disability_requirement": "not_applicable",
+    "course_levels": [
+      "Class 11",
+      "Class 12",
+      "UG",
+      "PG",
+      "Diploma"
+    ],
+    "summary": "Post-matric scholarship for OBC students pursuing education from Class 11 level onwards. Family income ceiling ₹1 lakh per annum for central-list OBC (some states use ₹1.5 lakh). Centrally sponsored via the National Scholarship Portal.",
+    "docs_required": [
+      "Aadhaar Card",
+      "OBC Certificate (non-creamy layer, government-issued)",
+      "Income Certificate (family income)",
+      "Bank Account Details",
+      "Previous Year Marksheet",
+      "Institution Enrollment Proof"
+    ],
+    "source_type": "government",
+    "source_note": "Centrally sponsored scheme for OBC students, administered via NSP. Income limit varies between ₹1 lakh (central list) and ₹1.5 lakh (some state interpretations).",
+    "verification_note": "[DEADLINE STALE — April 2026] The deadline field records the 2025 cycle. Before promoting, open the source_url and confirm the 2025-26 or 2026-27 cycle deadline. Do not promote with a past deadline. income_limit is highly ambiguous: the central scheme lists ₹1 lakh but many state NSP portals show ₹1.5 lakh; set to 150000 as a conservative upper bound — reviewer must verify the current-cycle figure on NSP. No minimum marks requirement nationally — min_marks set to null. Deadline is approximate; verify on NSP each cycle. Non-creamy layer certificate requirement is standard but cannot be checked by the match engine.",
+    "ambiguous_fields": [
+      "income_limit",
+      "deadline",
+      "docs_required"
+    ],
+    "verification_status": "needs_review",
+    "last_verified_at": "2026-04-29"
+  },
+  {
+    "id": "sc-045",
+    "name": "Prime Minister's Scholarship Scheme for Central Armed Police Forces and Assam Rifles",
+    "provider": "Ministry of Home Affairs (CAPF) / Ministry of Defence (Assam Rifles), Government of India",
+    "official_url": "https://scholarships.gov.in",
+    "source_url": "https://scholarships.gov.in",
+    "source_name": "National Scholarship Portal — PM Scholarship Scheme for CAPF & AR",
+    "deadline": "2025-10-31",
+    "states_allowed": [
+      "ALL"
+    ],
+    "min_marks": 60,
+    "income_limit": null,
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
+    "disability_requirement": "not_applicable",
+    "course_levels": [
+      "UG",
+      "Diploma"
+    ],
+    "summary": "Scholarship exclusively for wards and widows of Central Armed Police Forces (BSF, CRPF, CISF, ITBP, SSB, NSG) and Assam Rifles personnel. Provides ₹2,500–₹3,000/month depending on course type. No income ceiling. Requires a service/ex-service certificate from the parent's unit.",
+    "docs_required": [
+      "Aadhaar Card",
+      "Service Certificate / Ex-Service Certificate (from parent's CAPF/AR unit)",
+      "Class 12 Marksheet (minimum 60%)",
+      "Institution Enrollment Certificate (AICTE/UGC-approved institution)",
+      "Bank Account Details (student's own account)"
+    ],
+    "source_type": "government",
+    "source_note": "Centrally administered via NSP. Two sub-schemes: one under MHA for CAPF wards, one under Ministry of Defence for AR wards. Both available on NSP under the same scheme family. Replaces mock entry sc-002.",
+    "verification_note": "[DEADLINE STALE — April 2026] The deadline field records the 2025 cycle. Before promoting, open the source_url and confirm the 2025-26 or 2026-27 cycle deadline. Do not promote with a past deadline. No income limit — income_limit is null. The 60% min_marks in Class 12 is the well-cited eligibility floor for this scheme. Deadline is approximate; verify current cycle on NSP. The service certificate requirement (parent must be serving or ex-CAPF/AR personnel) cannot be checked by the match engine's StudentProfile fields — this record will correctly return insufficient_data for all users, which is the intended behaviour. Two sub-categories exist (professional ₹3,000/month, non-professional ₹2,500/month); this record is the umbrella entry.",
+    "ambiguous_fields": [
+      "deadline"
+    ],
+    "verification_status": "needs_review",
+    "last_verified_at": "2026-04-29"
+  },
+  {
+    "id": "sc-046",
+    "name": "Post-Matric Scholarship for Scheduled Castes — Bihar",
+    "provider": "Social Welfare Department, Government of Bihar",
+    "official_url": "https://scholarships.gov.in",
+    "source_url": "https://scholarships.gov.in",
+    "source_name": "National Scholarship Portal — Post-Matric Scholarship for SC (Bihar)",
+    "deadline": "2025-11-30",
+    "states_allowed": [
+      "Bihar"
+    ],
+    "min_marks": null,
+    "income_limit": 250000,
+    "category_allowed": [
+      "SC"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
+    "disability_requirement": "not_applicable",
+    "course_levels": [
+      "Class 11",
+      "Class 12",
+      "UG",
+      "PG",
+      "Diploma"
+    ],
+    "summary": "Post-matric scholarship for Scheduled Caste students domiciled in Bihar, pursuing education from Class 11 level onwards. Family income ceiling ₹2.5 lakh per annum. Funds disbursed via the National Scholarship Portal through the Bihar Social Welfare Department.",
+    "docs_required": [
+      "Aadhaar Card",
+      "SC Caste Certificate (Bihar-issued)",
+      "Bihar Domicile Certificate",
+      "Income Certificate (family income ≤ ₹2.5 lakh)",
+      "Bank Account Details",
+      "Previous Year Marksheet",
+      "Institution Enrollment Proof"
+    ],
+    "source_type": "government",
+    "source_note": "State-specific implementation of the nationally sponsored Post-Matric SC scheme. Bihar Social Welfare Department disburses funds via NSP. Replaces mock entry sc-026.",
+    "verification_note": "[DEADLINE STALE — April 2026] The deadline field records the 2025 cycle. Before promoting, open the source_url and confirm the 2025-26 or 2026-27 cycle deadline. Do not promote with a past deadline. No minimum academic marks at the national level — min_marks is null. Income limit of ₹2.5 lakh matches the standard NSP figure for Post-Matric SC; verify current cycle notification on NSP for any Bihar-specific variation. Bihar domicile is required in addition to SC caste certificate. Deadline is approximate (typically October–November); verify on NSP.",
+    "ambiguous_fields": [
+      "deadline",
+      "docs_required"
+    ],
+    "verification_status": "needs_review",
+    "last_verified_at": "2026-04-29"
+  },
+  {
+    "id": "sc-047",
+    "name": "Pratibha Kiran Scholarship — Madhya Pradesh",
+    "provider": "Higher Education Department, Government of Madhya Pradesh",
+    "official_url": "https://scholarshipportal.mp.nic.in",
+    "source_url": "https://scholarshipportal.mp.nic.in",
+    "source_name": "MP Scholarship Portal — Pratibha Kiran scheme",
+    "deadline": "2025-12-31",
+    "states_allowed": [
+      "Madhya Pradesh"
+    ],
+    "min_marks": 60,
+    "income_limit": null,
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "Female"
+    ],
+    "disability_requirement": "not_applicable",
+    "course_levels": [
+      "UG"
+    ],
+    "summary": "Merit scholarship for girls from urban areas of Madhya Pradesh who scored 60% or above in MP Board Class 12 exams and are enrolled in a UG degree programme. Provides ₹5,000 per year. No income ceiling. Administered by the MP Higher Education Department.",
+    "docs_required": [
+      "Aadhaar Card",
+      "MP Domicile Certificate",
+      "MP Board Class 12 Marksheet (60%+)",
+      "Urban Area Residence Proof",
+      "Institution Enrollment Certificate (UG)",
+      "Bank Account Details"
+    ],
+    "source_type": "government",
+    "source_note": "State scheme administered via scholarshipportal.mp.nic.in. Restricted to girls from urban areas of Madhya Pradesh. Replaces mock entry sc-036 (which had incorrect min_marks of 70%).",
+    "verification_note": "[DEADLINE STALE — April 2026] The deadline field records the 2025 cycle. Before promoting, open the source_url and confirm the 2025-26 or 2026-27 cycle deadline. Do not promote with a past deadline. min_marks of 60% is the standard cited threshold for Pratibha Kiran — the mock record incorrectly had 70%. No income ceiling — income_limit is null. Urban area restriction applies but cannot be verified by the match engine. Deadline is approximate; verify on the MP scholarship portal for the current academic year cycle. course_levels is UG only — the scheme targets students newly entering UG after Class 12.",
+    "ambiguous_fields": [
+      "deadline",
+      "docs_required"
+    ],
+    "verification_status": "needs_review",
+    "last_verified_at": "2026-04-29"
+  }
+]

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Scholarship } from "@/types";
 import DeadlineBadge from "@/components/DeadlineBadge";
+import VerificationBadge from "@/components/VerificationBadge";
 import MatchSection from "./MatchSection";
 import rawScholarships from "@/data/scholarships.json";
 
@@ -117,12 +118,21 @@ export default async function ScholarshipDetailPage({ params }: Props) {
               {SOURCE_LABELS[sc.source_type] ?? sc.source_type}
             </span>
             <DeadlineBadge deadline={sc.deadline} />
+            <VerificationBadge status={sc.verification_status} size="sm" />
           </div>
 
           <h1 className="text-xl font-bold text-slate-900 dark:text-slate-100 leading-snug mb-1">
             {sc.name}
           </h1>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mb-5">{sc.provider}</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">{sc.provider}</p>
+
+          <p className="text-xs text-slate-400 dark:text-slate-500 mb-5">
+            {sc.verification_status === "verified"
+              ? "Eligibility details manually confirmed against the official source."
+              : sc.verification_status === "needs_review"
+              ? "Official source identified; manual verification pending."
+              : "Based on official scheme information; confirm current details on the official page."}
+          </p>
 
           <a
             href={sc.official_url}
@@ -205,15 +215,69 @@ export default async function ScholarshipDetailPage({ params }: Props) {
         <MatchSection id={id} />
 
         {/* ── Transparency ──────────────────────────────────────────────────── */}
-        <section className="bg-amber-50 dark:bg-amber-950/20 border border-amber-100 dark:border-amber-900/30 rounded-2xl p-6">
+        <section
+          className={[
+            "rounded-2xl border p-6",
+            sc.verification_status === "verified"
+              ? "bg-emerald-50/60 border-emerald-100 dark:bg-emerald-950/20 dark:border-emerald-900/30"
+              : "bg-amber-50 border-amber-100 dark:bg-amber-950/20 dark:border-amber-900/30",
+          ].join(" ")}
+        >
           <h2 className="text-base font-semibold text-slate-900 dark:text-slate-100 mb-4">
             Transparency &amp; data notes
           </h2>
           <div className="space-y-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            <p>
-              <span className="font-semibold text-slate-800 dark:text-slate-300">Source note: </span>
-              {sc.source_note}
-            </p>
+
+            {/* Verification provenance */}
+            {sc.verification_status === "verified" ? (
+              <p>
+                <span className="font-semibold text-emerald-700 dark:text-emerald-400">Source verified: </span>
+                Eligibility criteria for this record were manually confirmed against the official source.
+                {sc.source_name && (
+                  <> Source: <span className="font-medium text-slate-700 dark:text-slate-300">{sc.source_name}</span>.</>
+                )}
+                {sc.last_verified_at && (
+                  <> Last checked:{" "}
+                    <span className="font-medium text-slate-700 dark:text-slate-300">
+                      {new Date(sc.last_verified_at).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}
+                    </span>.
+                  </>
+                )}
+                {sc.source_url && (
+                  <> <a href={sc.source_url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 text-emerald-700 dark:text-emerald-400 hover:text-emerald-900 dark:hover:text-emerald-300 ml-0.5">View source ↗</a></>
+                )}
+              </p>
+            ) : sc.verification_status === "needs_review" ? (
+              <p>
+                <span className="font-semibold text-slate-700 dark:text-slate-300">Pending verification: </span>
+                This record is sourced from an official portal but has not yet been manually spot-checked.
+                {sc.source_name && (
+                  <> Data sourced from: <span className="font-medium text-slate-700 dark:text-slate-300">{sc.source_name}</span>.</>
+                )}
+              </p>
+            ) : (
+              <p>
+                <span className="font-semibold text-amber-700 dark:text-amber-400">Under review: </span>
+                This record is based on official scholarship scheme information but has not yet been manually verified against the source. Eligibility criteria, deadlines, and income limits may have changed. Confirm current details on the official scholarship page before applying.
+              </p>
+            )}
+
+            {/* Verification note if present */}
+            {sc.verification_note && (
+              <p>
+                <span className="font-semibold text-slate-800 dark:text-slate-300">Reviewer notes: </span>
+                {sc.verification_note}
+              </p>
+            )}
+
+            {/* Source note — only shown for verified/needs_review records where it carries meaningful provenance */}
+            {sc.source_note && sc.verification_status !== "mock" && (
+              <p>
+                <span className="font-semibold text-slate-800 dark:text-slate-300">Source note: </span>
+                {sc.source_note}
+              </p>
+            )}
+
             <p>
               <span className="font-semibold text-slate-800 dark:text-slate-300">Guidance only: </span>
               This result is not an official eligibility decision. Rules may have

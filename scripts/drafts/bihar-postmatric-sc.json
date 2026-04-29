@@ -1,0 +1,29 @@
+{
+  "name": "Post-Matric Scholarship for Scheduled Castes — Bihar",
+  "provider": "Social Welfare Department, Government of Bihar",
+  "official_url": "https://scholarships.gov.in",
+  "source_url": "https://scholarships.gov.in",
+  "source_name": "National Scholarship Portal — Post-Matric Scholarship for SC (Bihar)",
+  "deadline": "2025-11-30",
+  "states_allowed": ["Bihar"],
+  "min_marks": null,
+  "income_limit": 250000,
+  "category_allowed": ["SC"],
+  "gender_allowed": ["ALL"],
+  "disability_requirement": "not_applicable",
+  "course_levels": ["Class 11", "Class 12", "UG", "PG", "Diploma"],
+  "summary": "Post-matric scholarship for Scheduled Caste students domiciled in Bihar, pursuing education from Class 11 level onwards. Family income ceiling ₹2.5 lakh per annum. Funds disbursed via the National Scholarship Portal through the Bihar Social Welfare Department.",
+  "docs_required": [
+    "Aadhaar Card",
+    "SC Caste Certificate (Bihar-issued)",
+    "Bihar Domicile Certificate",
+    "Income Certificate (family income ≤ ₹2.5 lakh)",
+    "Bank Account Details",
+    "Previous Year Marksheet",
+    "Institution Enrollment Proof"
+  ],
+  "source_type": "government",
+  "source_note": "State-specific implementation of the nationally sponsored Post-Matric SC scheme. Bihar Social Welfare Department disburses funds via NSP. Replaces mock entry sc-026.",
+  "verification_note": "No minimum academic marks at the national level — min_marks is null. Income limit of ₹2.5 lakh matches the standard NSP figure for Post-Matric SC; verify current cycle notification on NSP for any Bihar-specific variation. Bihar domicile is required in addition to SC caste certificate. Deadline is approximate (typically October–November); verify on NSP.",
+  "ambiguous_fields": ["deadline", "docs_required"]
+}

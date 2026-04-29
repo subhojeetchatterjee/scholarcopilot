@@ -1,0 +1,27 @@
+{
+  "name": "INSPIRE Scholarship for Higher Education (SHE)",
+  "provider": "Department of Science and Technology (DST), Government of India",
+  "official_url": "https://online-inspire.gov.in",
+  "source_url": "https://online-inspire.gov.in",
+  "source_name": "INSPIRE online portal — SHE scheme (DST)",
+  "deadline": "2025-11-30",
+  "states_allowed": ["ALL"],
+  "min_marks": 60,
+  "income_limit": null,
+  "category_allowed": ["ALL"],
+  "gender_allowed": ["ALL"],
+  "disability_requirement": "not_applicable",
+  "course_levels": ["UG", "PG"],
+  "summary": "Scholarship for students pursuing natural and basic sciences (Physics, Chemistry, Mathematics, Biology, Statistics, etc.) at UG/PG level, awarded to top performers in Class 12 board exams. Provides ₹80,000/year (UG) and ₹1,12,000/year (PG). No income ceiling.",
+  "docs_required": [
+    "Aadhaar Card",
+    "Class 12 Marksheet (board merit proof)",
+    "Admission Letter for natural/basic science course",
+    "Bank Account Details (student's own account)",
+    "Institution Enrollment Certificate"
+  ],
+  "source_type": "government",
+  "source_note": "DST INSPIRE-SHE is a merit-only scheme with no income criterion. Administered via online-inspire.gov.in.",
+  "verification_note": "No income limit — income_limit set to null. The 60% min_marks is a commonly cited threshold but actual eligibility is based on board-exam merit rank (top 1% nationally or state board toppers); the match engine cannot replicate rank-based logic so 60% is used as a proxy. Deadline is approximate; verify on the INSPIRE portal each cycle. Natural/basic sciences subject restriction cannot be checked by the match engine.",
+  "ambiguous_fields": ["min_marks", "deadline", "docs_required"]
+}

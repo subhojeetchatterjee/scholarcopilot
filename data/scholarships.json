@@ -5,13 +5,22 @@
     "provider": "Ministry of Education, Government of India",
     "official_url": "https://scholarships.gov.in",
     "deadline": "2026-10-31",
-    "states_allowed": ["ALL"],
+    "states_allowed": [
+      "ALL"
+    ],
     "min_marks": 80,
     "income_limit": 450000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["UG", "PG"],
+    "course_levels": [
+      "UG",
+      "PG"
+    ],
     "summary": "Merit-cum-means scholarship for students in the top 20 percentile of their board exam, pursuing regular courses in colleges and universities.",
     "docs_required": [
       "Aadhaar Card",
@@ -21,7 +30,8 @@
       "Institution Enrollment Proof"
     ],
     "source_type": "government",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-002",
@@ -29,13 +39,23 @@
     "provider": "Ministry of Home Affairs, Government of India",
     "official_url": "https://scholarships.gov.in",
     "deadline": "2026-09-30",
-    "states_allowed": ["ALL"],
+    "states_allowed": [
+      "ALL"
+    ],
     "min_marks": 60,
     "income_limit": null,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["Class 11", "Class 12", "UG"],
+    "course_levels": [
+      "Class 11",
+      "Class 12",
+      "UG"
+    ],
     "summary": "Scholarship for widows and wards of Central Armed Police Forces and Assam Rifles personnel who died or were disabled in service.",
     "docs_required": [
       "Aadhaar Card",
@@ -45,31 +65,8 @@
       "Bank Account Details"
     ],
     "source_type": "government",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
-  },
-  {
-    "id": "sc-003",
-    "name": "National Scholarship for Persons with Disabilities",
-    "provider": "Department of Empowerment of Persons with Disabilities, Government of India",
-    "official_url": "https://scholarships.gov.in",
-    "deadline": "2026-11-15",
-    "states_allowed": ["ALL"],
-    "min_marks": 40,
-    "income_limit": 250000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
-    "disability_requirement": "required",
-    "course_levels": ["Class 11", "Class 12", "UG", "PG", "Diploma"],
-    "summary": "Scholarship exclusively for students with benchmark disabilities, supporting education at all levels from post-matric onwards.",
-    "docs_required": [
-      "Aadhaar Card",
-      "Disability Certificate (40% or above)",
-      "Income Certificate",
-      "Marksheet",
-      "Bank Account Details"
-    ],
-    "source_type": "government",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-004",
@@ -77,13 +74,24 @@
     "provider": "Tata Capital Limited",
     "official_url": "https://www.tatacapital.com/pankh",
     "deadline": "2026-07-31",
-    "states_allowed": ["ALL"],
+    "states_allowed": [
+      "ALL"
+    ],
     "min_marks": 60,
     "income_limit": 400000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["Class 11", "Class 12", "UG", "Diploma"],
+    "course_levels": [
+      "Class 11",
+      "Class 12",
+      "UG",
+      "Diploma"
+    ],
     "summary": "Supports meritorious students from low-income families pursuing Class 11, Class 12, or undergraduate diploma or degree programmes.",
     "docs_required": [
       "Aadhaar Card",
@@ -93,7 +101,8 @@
       "Bank Account Details"
     ],
     "source_type": "private",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-005",
@@ -101,13 +110,21 @@
     "provider": "Reliance Foundation",
     "official_url": "https://reliancefoundation.org",
     "deadline": "2026-08-31",
-    "states_allowed": ["ALL"],
+    "states_allowed": [
+      "ALL"
+    ],
     "min_marks": 60,
     "income_limit": 1500000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["UG"],
+    "course_levels": [
+      "UG"
+    ],
     "summary": "Merit-based scholarship for first-year undergraduate students in STEM and humanities, with mentorship and networking opportunities.",
     "docs_required": [
       "Aadhaar Card",
@@ -117,7 +134,8 @@
       "Bank Account Details"
     ],
     "source_type": "private",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-006",
@@ -125,13 +143,22 @@
     "provider": "HDFC Bank",
     "official_url": "https://www.hdfcbank.com/parivartan",
     "deadline": "2026-06-30",
-    "states_allowed": ["ALL"],
+    "states_allowed": [
+      "ALL"
+    ],
     "min_marks": 55,
     "income_limit": 250000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["UG", "Diploma"],
+    "course_levels": [
+      "UG",
+      "Diploma"
+    ],
     "summary": "Financial support for undergraduate and diploma students from economically weaker sections to continue higher education without interruption.",
     "docs_required": [
       "Aadhaar Card",
@@ -141,7 +168,8 @@
       "College ID"
     ],
     "source_type": "private",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-007",
@@ -149,13 +177,22 @@
     "provider": "Aga Khan Foundation India",
     "official_url": "https://www.akdn.org/india",
     "deadline": "2026-09-15",
-    "states_allowed": ["ALL"],
+    "states_allowed": [
+      "ALL"
+    ],
     "min_marks": 50,
     "income_limit": 600000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["UG", "PG"],
+    "course_levels": [
+      "UG",
+      "PG"
+    ],
     "summary": "Supports talented students from under-resourced communities with a combination of grant and loan, focusing on marginalized groups pursuing higher education.",
     "docs_required": [
       "Aadhaar Card",
@@ -165,7 +202,8 @@
       "Bank Account Details"
     ],
     "source_type": "ngo",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-008",
@@ -173,13 +211,21 @@
     "provider": "L'Oreal India",
     "official_url": "https://www.loreal.com/india",
     "deadline": "2026-08-15",
-    "states_allowed": ["ALL"],
+    "states_allowed": [
+      "ALL"
+    ],
     "min_marks": 75,
     "income_limit": null,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["Female"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "Female"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["UG"],
+    "course_levels": [
+      "UG"
+    ],
     "summary": "Encourages young women to pursue science careers by supporting meritorious female students enrolled in undergraduate science programmes across India.",
     "docs_required": [
       "Aadhaar Card",
@@ -189,7 +235,8 @@
       "Bank Account Details"
     ],
     "source_type": "private",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-009",
@@ -197,13 +244,22 @@
     "provider": "NSE Foundation via Vidyasaarathi Platform",
     "official_url": "https://www.vidyasaarathi.co.in",
     "deadline": "2026-07-15",
-    "states_allowed": ["ALL"],
+    "states_allowed": [
+      "ALL"
+    ],
     "min_marks": 60,
     "income_limit": 500000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["Class 12", "UG"],
+    "course_levels": [
+      "Class 12",
+      "UG"
+    ],
     "summary": "Merit-cum-means scholarship connecting students to multiple corporate CSR partners through a single platform, covering tuition and living expenses.",
     "docs_required": [
       "Aadhaar Card",
@@ -212,7 +268,8 @@
       "Bank Account Details"
     ],
     "source_type": "ngo",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-010",
@@ -220,13 +277,22 @@
     "provider": "All India Council for Technical Education",
     "official_url": "https://www.aicte-india.org",
     "deadline": "2026-10-15",
-    "states_allowed": ["ALL"],
+    "states_allowed": [
+      "ALL"
+    ],
     "min_marks": null,
     "income_limit": 800000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["Female"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "Female"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["UG", "Diploma"],
+    "course_levels": [
+      "UG",
+      "Diploma"
+    ],
     "summary": "Promotes technical education among girl students by providing tuition fee support and maintenance allowance for AICTE-approved institutions.",
     "docs_required": [
       "Aadhaar Card",
@@ -236,7 +302,8 @@
       "Bank Account Details"
     ],
     "source_type": "institution",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-011",
@@ -244,13 +311,22 @@
     "provider": "Department of Science and Technology, Government of India",
     "official_url": "https://online-inspire.gov.in",
     "deadline": "2026-11-30",
-    "states_allowed": ["ALL"],
+    "states_allowed": [
+      "ALL"
+    ],
     "min_marks": 75,
     "income_limit": null,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["UG", "PG"],
+    "course_levels": [
+      "UG",
+      "PG"
+    ],
     "summary": "For students who scored in the top 1% in Class 12 board exams and are pursuing BSc or MSc in natural and basic sciences at recognised institutions.",
     "docs_required": [
       "Aadhaar Card",
@@ -260,7 +336,8 @@
       "Bank Account Details"
     ],
     "source_type": "government",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-012",
@@ -268,13 +345,23 @@
     "provider": "Wipro Foundation",
     "official_url": "https://www.wipro.com/wipro-cares",
     "deadline": "2026-09-30",
-    "states_allowed": ["ALL"],
+    "states_allowed": [
+      "ALL"
+    ],
     "min_marks": 70,
     "income_limit": 300000,
-    "category_allowed": ["SC", "ST", "OBC"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "SC",
+      "ST",
+      "OBC"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["UG"],
+    "course_levels": [
+      "UG"
+    ],
     "summary": "Supports SC, ST, and OBC students from low-income backgrounds pursuing undergraduate degrees in engineering, computer science, or applied sciences.",
     "docs_required": [
       "Aadhaar Card",
@@ -285,7 +372,8 @@
       "Bank Account Details"
     ],
     "source_type": "private",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-013",
@@ -293,13 +381,26 @@
     "provider": "Social Justice and Special Assistance Department, Government of Maharashtra",
     "official_url": "https://mahadbt.maharashtra.gov.in",
     "deadline": "2026-12-15",
-    "states_allowed": ["Maharashtra"],
+    "states_allowed": [
+      "Maharashtra"
+    ],
     "min_marks": 50,
     "income_limit": 250000,
-    "category_allowed": ["SC", "ST", "OBC", "NT"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "SC",
+      "ST",
+      "OBC",
+      "NT"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["Class 11", "Class 12", "UG"],
+    "course_levels": [
+      "Class 11",
+      "Class 12",
+      "UG"
+    ],
     "summary": "Provides tuition fees and maintenance allowance for students from reserved categories pursuing post-SSC education in recognised Maharashtra institutions.",
     "docs_required": [
       "Aadhaar Card",
@@ -310,7 +411,8 @@
       "Bank Account Details"
     ],
     "source_type": "government",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-014",
@@ -318,13 +420,21 @@
     "provider": "Eklavya Foundation",
     "official_url": "https://www.eklavya.in",
     "deadline": "2026-07-31",
-    "states_allowed": ["Maharashtra"],
+    "states_allowed": [
+      "Maharashtra"
+    ],
     "min_marks": 65,
     "income_limit": 350000,
-    "category_allowed": ["ST"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "ST"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["UG"],
+    "course_levels": [
+      "UG"
+    ],
     "summary": "Focused on tribal students in Maharashtra, this scholarship supports undergraduate education and provides career counselling and mentoring.",
     "docs_required": [
       "Aadhaar Card",
@@ -335,31 +445,8 @@
       "Bank Account Details"
     ],
     "source_type": "ngo",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
-  },
-  {
-    "id": "sc-015",
-    "name": "Persistent Systems Academic Excellence Scholarship",
-    "provider": "Persistent Systems Foundation",
-    "official_url": "https://www.persistent.com/csr",
-    "deadline": "2026-08-31",
-    "states_allowed": ["Maharashtra"],
-    "min_marks": 80,
-    "income_limit": 500000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
-    "disability_requirement": "not_applicable",
-    "course_levels": ["UG"],
-    "summary": "Merit scholarship for top-performing engineering or computer science undergraduates in Maharashtra, with preference for students in government colleges.",
-    "docs_required": [
-      "Aadhaar Card",
-      "Class 12 Marksheet",
-      "Admission Letter",
-      "Income Certificate",
-      "Bank Account Details"
-    ],
-    "source_type": "institution",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-016",
@@ -367,13 +454,24 @@
     "provider": "Higher Education Department, Government of West Bengal",
     "official_url": "https://svmcm.wbhed.gov.in",
     "deadline": "2026-10-31",
-    "states_allowed": ["West Bengal"],
+    "states_allowed": [
+      "West Bengal"
+    ],
     "min_marks": 75,
     "income_limit": 250000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["Class 11", "Class 12", "UG", "PG"],
+    "course_levels": [
+      "Class 11",
+      "Class 12",
+      "UG",
+      "PG"
+    ],
     "summary": "One of the largest state-funded scholarships in West Bengal, awarded to meritorious students from economically weaker families at all levels of education.",
     "docs_required": [
       "Aadhaar Card",
@@ -383,7 +481,8 @@
       "Bank Account Details"
     ],
     "source_type": "government",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-017",
@@ -391,13 +490,24 @@
     "provider": "West Bengal Minorities' Development and Finance Corporation",
     "official_url": "https://wbmdfcscholarship.org",
     "deadline": "2026-09-30",
-    "states_allowed": ["West Bengal"],
+    "states_allowed": [
+      "West Bengal"
+    ],
     "min_marks": 50,
     "income_limit": 200000,
-    "category_allowed": ["OBC", "General"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "OBC",
+      "General"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["Class 11", "Class 12", "UG"],
+    "course_levels": [
+      "Class 11",
+      "Class 12",
+      "UG"
+    ],
     "summary": "Post-matric scholarship for minority community students in West Bengal covering tuition fees and maintenance allowance.",
     "docs_required": [
       "Aadhaar Card",
@@ -408,7 +518,8 @@
       "Bank Account Details"
     ],
     "source_type": "government",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-018",
@@ -416,13 +527,21 @@
     "provider": "Higher Education Department, Government of Tamil Nadu",
     "official_url": "https://www.tn.gov.in/higherEducation",
     "deadline": "2026-11-30",
-    "states_allowed": ["Tamil Nadu"],
+    "states_allowed": [
+      "Tamil Nadu"
+    ],
     "min_marks": 60,
     "income_limit": 200000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["UG"],
+    "course_levels": [
+      "UG"
+    ],
     "summary": "Scholarship for meritorious students from families below the poverty line pursuing undergraduate professional courses in Tamil Nadu institutions.",
     "docs_required": [
       "Aadhaar Card",
@@ -433,7 +552,8 @@
       "Bank Account Details"
     ],
     "source_type": "government",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-019",
@@ -441,13 +561,21 @@
     "provider": "Cognizant Foundation",
     "official_url": "https://www.cognizant.com/foundation",
     "deadline": "2026-06-30",
-    "states_allowed": ["Tamil Nadu"],
+    "states_allowed": [
+      "Tamil Nadu"
+    ],
     "min_marks": 70,
     "income_limit": 400000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["Female"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "Female"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["UG"],
+    "course_levels": [
+      "UG"
+    ],
     "summary": "Supports first-generation girl students from Tamil Nadu pursuing undergraduate STEM or management courses at accredited colleges.",
     "docs_required": [
       "Aadhaar Card",
@@ -457,7 +585,8 @@
       "Bank Account Details"
     ],
     "source_type": "private",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-020",
@@ -465,13 +594,24 @@
     "provider": "Social Justice and Empowerment Department, Government of Rajasthan",
     "official_url": "https://sje.rajasthan.gov.in",
     "deadline": "2026-12-31",
-    "states_allowed": ["Rajasthan"],
+    "states_allowed": [
+      "Rajasthan"
+    ],
     "min_marks": 50,
     "income_limit": 200000,
-    "category_allowed": ["OBC", "NT"],
-    "gender_allowed": ["Female"],
+    "category_allowed": [
+      "OBC",
+      "NT"
+    ],
+    "gender_allowed": [
+      "Female"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["Class 11", "Class 12", "UG"],
+    "course_levels": [
+      "Class 11",
+      "Class 12",
+      "UG"
+    ],
     "summary": "Encourages girls belonging to Devnarayan OBC communities in Rajasthan to continue education beyond Class 10 with financial support.",
     "docs_required": [
       "Aadhaar Card",
@@ -482,7 +622,8 @@
       "Bank Account Details"
     ],
     "source_type": "government",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-021",
@@ -490,13 +631,21 @@
     "provider": "Higher Education Department, Government of Rajasthan",
     "official_url": "https://hte.rajasthan.gov.in",
     "deadline": "2026-10-15",
-    "states_allowed": ["Rajasthan"],
+    "states_allowed": [
+      "Rajasthan"
+    ],
     "min_marks": 75,
     "income_limit": null,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["UG"],
+    "course_levels": [
+      "UG"
+    ],
     "summary": "Cash award for top-ranked students in the Rajasthan Board Class 12 exams who have enrolled in undergraduate courses at Rajasthan colleges.",
     "docs_required": [
       "Aadhaar Card",
@@ -506,7 +655,8 @@
       "Bank Account Details"
     ],
     "source_type": "government",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-022",
@@ -514,13 +664,21 @@
     "provider": "Infosys Foundation",
     "official_url": "https://www.infosys.com/infosys-foundation",
     "deadline": "2026-08-31",
-    "states_allowed": ["Karnataka"],
+    "states_allowed": [
+      "Karnataka"
+    ],
     "min_marks": 70,
     "income_limit": 600000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["UG"],
+    "course_levels": [
+      "UG"
+    ],
     "summary": "Encourages engineering and computer science undergraduates in Karnataka with financial support and internship placement assistance.",
     "docs_required": [
       "Aadhaar Card",
@@ -531,7 +689,8 @@
       "Bank Account Details"
     ],
     "source_type": "private",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-023",
@@ -539,13 +698,25 @@
     "provider": "Sadhana Education Trust",
     "official_url": "https://www.sadhanascholarship.org",
     "deadline": "2026-07-15",
-    "states_allowed": ["Karnataka"],
+    "states_allowed": [
+      "Karnataka"
+    ],
     "min_marks": 55,
     "income_limit": 150000,
-    "category_allowed": ["SC", "ST", "OBC"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "SC",
+      "ST",
+      "OBC"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["Class 11", "Class 12", "UG"],
+    "course_levels": [
+      "Class 11",
+      "Class 12",
+      "UG"
+    ],
     "summary": "Supports first-generation learners from rural Karnataka belonging to reserved categories who face financial hardship continuing education.",
     "docs_required": [
       "Aadhaar Card",
@@ -556,7 +727,8 @@
       "Bank Account Details"
     ],
     "source_type": "ngo",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-024",
@@ -564,13 +736,23 @@
     "provider": "Backward Class Welfare Department, Government of Uttar Pradesh",
     "official_url": "https://scholarship.up.gov.in",
     "deadline": "2026-10-31",
-    "states_allowed": ["Uttar Pradesh"],
+    "states_allowed": [
+      "Uttar Pradesh"
+    ],
     "min_marks": null,
     "income_limit": 100000,
-    "category_allowed": ["OBC"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "OBC"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["Class 11", "Class 12", "UG"],
+    "course_levels": [
+      "Class 11",
+      "Class 12",
+      "UG"
+    ],
     "summary": "Covers tuition and maintenance fees for OBC students in Uttar Pradesh pursuing education after Class 10 at recognised institutions.",
     "docs_required": [
       "Aadhaar Card",
@@ -581,32 +763,8 @@
       "Bank Account Details"
     ],
     "source_type": "government",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
-  },
-  {
-    "id": "sc-025",
-    "name": "UIET Alumni Foundation Scholarship Uttar Pradesh",
-    "provider": "UIET Alumni Association",
-    "official_url": "https://www.uiet.ac.in/scholarship",
-    "deadline": "2026-09-15",
-    "states_allowed": ["Uttar Pradesh"],
-    "min_marks": 70,
-    "income_limit": 400000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
-    "disability_requirement": "not_applicable",
-    "course_levels": ["UG"],
-    "summary": "Alumni-funded merit-based scholarship for engineering students from economically weaker sections domiciled in Uttar Pradesh.",
-    "docs_required": [
-      "Aadhaar Card",
-      "Marksheet",
-      "Income Certificate",
-      "Domicile Certificate (Uttar Pradesh)",
-      "Admission Letter",
-      "Bank Account Details"
-    ],
-    "source_type": "institution",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-026",
@@ -614,13 +772,23 @@
     "provider": "Scheduled Caste and Scheduled Tribe Welfare Department, Government of Bihar",
     "official_url": "https://pmsonline.bih.nic.in",
     "deadline": "2026-11-15",
-    "states_allowed": ["Bihar"],
+    "states_allowed": [
+      "Bihar"
+    ],
     "min_marks": 45,
     "income_limit": 250000,
-    "category_allowed": ["SC"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "SC"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["Class 11", "Class 12", "UG"],
+    "course_levels": [
+      "Class 11",
+      "Class 12",
+      "UG"
+    ],
     "summary": "Tuition and maintenance support for SC students in Bihar pursuing post-matric education at government or recognised private institutions.",
     "docs_required": [
       "Aadhaar Card",
@@ -631,7 +799,8 @@
       "Bank Account Details"
     ],
     "source_type": "government",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-027",
@@ -639,13 +808,22 @@
     "provider": "Pratham Education Foundation",
     "official_url": "https://www.pratham.org",
     "deadline": "2026-08-15",
-    "states_allowed": ["Bihar"],
+    "states_allowed": [
+      "Bihar"
+    ],
     "min_marks": 55,
     "income_limit": 150000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["Female"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "Female"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["Class 12", "UG"],
+    "course_levels": [
+      "Class 12",
+      "UG"
+    ],
     "summary": "Empowers girls in Bihar by supporting their transition from secondary to higher education through financial grants and dedicated academic mentoring.",
     "docs_required": [
       "Aadhaar Card",
@@ -655,55 +833,8 @@
       "Bank Account Details"
     ],
     "source_type": "ngo",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
-  },
-  {
-    "id": "sc-028",
-    "name": "Narayana Educational Trust Merit Scholarship Andhra Pradesh",
-    "provider": "Narayana Group of Institutions",
-    "official_url": "https://www.narayanagroup.com/scholarship",
-    "deadline": "2026-06-15",
-    "states_allowed": ["Andhra Pradesh"],
-    "min_marks": 80,
-    "income_limit": 500000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
-    "disability_requirement": "not_applicable",
-    "course_levels": ["Class 11", "Class 12"],
-    "summary": "Merit scholarship for high-performing Class 10 pass-outs from Andhra Pradesh seeking admission into premier engineering or medical entrance coaching.",
-    "docs_required": [
-      "Aadhaar Card",
-      "Class 10 Marksheet",
-      "Income Certificate",
-      "Domicile Certificate (Andhra Pradesh)",
-      "Bank Account Details"
-    ],
-    "source_type": "private",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
-  },
-  {
-    "id": "sc-029",
-    "name": "RGUKT Residential Scholarship Andhra Pradesh",
-    "provider": "Rajiv Gandhi University of Knowledge Technologies",
-    "official_url": "https://www.rgukt.ac.in",
-    "deadline": "2026-09-30",
-    "states_allowed": ["Andhra Pradesh"],
-    "min_marks": 60,
-    "income_limit": 600000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
-    "disability_requirement": "not_applicable",
-    "course_levels": ["UG"],
-    "summary": "Residential scholarship for students from rural Andhra Pradesh admitted to RGUKT campuses, covering full tuition, boarding, and a monthly stipend.",
-    "docs_required": [
-      "Aadhaar Card",
-      "Class 10 Marksheet",
-      "Income Certificate",
-      "Domicile Certificate (Andhra Pradesh)",
-      "Bank Account Details"
-    ],
-    "source_type": "institution",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-030",
@@ -711,13 +842,22 @@
     "provider": "Kerala State Literacy Mission Authority",
     "official_url": "https://www.kerala.gov.in/literacy",
     "deadline": "2026-10-15",
-    "states_allowed": ["Kerala"],
+    "states_allowed": [
+      "Kerala"
+    ],
     "min_marks": 50,
     "income_limit": 300000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["Female"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "Female"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["Class 12", "UG"],
+    "course_levels": [
+      "Class 12",
+      "UG"
+    ],
     "summary": "Supports girls who are first-generation college students from Kerala, with a focus on women who are primary earners or from single-parent families.",
     "docs_required": [
       "Aadhaar Card",
@@ -728,7 +868,8 @@
       "Bank Account Details"
     ],
     "source_type": "government",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-031",
@@ -736,13 +877,22 @@
     "provider": "UST Global Foundation",
     "official_url": "https://www.ust.com/foundation",
     "deadline": "2026-07-31",
-    "states_allowed": ["Kerala"],
+    "states_allowed": [
+      "Kerala"
+    ],
     "min_marks": 75,
     "income_limit": 500000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["UG", "PG"],
+    "course_levels": [
+      "UG",
+      "PG"
+    ],
     "summary": "Scholarship for engineering and IT students from Kerala pursuing undergraduate or postgraduate programmes, with preference for first-generation college students.",
     "docs_required": [
       "Aadhaar Card",
@@ -753,7 +903,8 @@
       "Bank Account Details"
     ],
     "source_type": "private",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-032",
@@ -761,13 +912,23 @@
     "provider": "Kalinga Education Foundation",
     "official_url": "https://www.kalingafoundation.org",
     "deadline": "2026-12-31",
-    "states_allowed": ["Odisha"],
+    "states_allowed": [
+      "Odisha"
+    ],
     "min_marks": 70,
     "income_limit": 150000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["Class 11", "Class 12", "UG"],
+    "course_levels": [
+      "Class 11",
+      "Class 12",
+      "UG"
+    ],
     "summary": "State-focused NGO scholarship for meritorious and economically weak students in Odisha, covering partial tuition fees at government institutions.",
     "docs_required": [
       "Aadhaar Card",
@@ -777,55 +938,8 @@
       "Bank Account Details"
     ],
     "source_type": "ngo",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
-  },
-  {
-    "id": "sc-033",
-    "name": "KIIT University Merit Scholarship Odisha",
-    "provider": "KIIT Deemed to be University",
-    "official_url": "https://www.kiit.ac.in/scholarship",
-    "deadline": "2026-06-30",
-    "states_allowed": ["Odisha"],
-    "min_marks": 85,
-    "income_limit": null,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
-    "disability_requirement": "not_applicable",
-    "course_levels": ["UG", "PG"],
-    "summary": "Merit-based tuition fee waiver for top-ranked students from Odisha admitted to KIIT's undergraduate or postgraduate programmes.",
-    "docs_required": [
-      "Aadhaar Card",
-      "Class 12 Marksheet",
-      "Admission Letter (KIIT)",
-      "Bank Account Details"
-    ],
-    "source_type": "institution",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
-  },
-  {
-    "id": "sc-034",
-    "name": "Delhi Higher Education Aid Trust Scholarship",
-    "provider": "Delhi Higher Education Aid Trust",
-    "official_url": "https://www.delhiheat.org",
-    "deadline": "2026-09-15",
-    "states_allowed": ["Delhi"],
-    "min_marks": 60,
-    "income_limit": 200000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["ALL"],
-    "disability_requirement": "preferred",
-    "course_levels": ["UG", "PG", "Diploma"],
-    "summary": "Provides financial assistance to students from Delhi facing economic hardship, with additional support provisions for students with disabilities.",
-    "docs_required": [
-      "Aadhaar Card",
-      "Marksheet",
-      "Income Certificate",
-      "Domicile Certificate (Delhi)",
-      "Bank Account Details",
-      "Disability Certificate (if applicable)"
-    ],
-    "source_type": "institution",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-035",
@@ -833,13 +947,21 @@
     "provider": "DLF Foundation",
     "official_url": "https://www.dlf.in/foundation",
     "deadline": "2026-08-31",
-    "states_allowed": ["Delhi"],
+    "states_allowed": [
+      "Delhi"
+    ],
     "min_marks": 65,
     "income_limit": 400000,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["Female"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "Female"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["UG"],
+    "course_levels": [
+      "UG"
+    ],
     "summary": "Supports girls from economically weaker sections in Delhi pursuing undergraduate courses, with preference for commerce and humanities streams.",
     "docs_required": [
       "Aadhaar Card",
@@ -849,7 +971,8 @@
       "Bank Account Details"
     ],
     "source_type": "private",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
   },
   {
     "id": "sc-036",
@@ -857,13 +980,21 @@
     "provider": "Higher Education Department, Government of Madhya Pradesh",
     "official_url": "https://scholarshipportal.mp.nic.in",
     "deadline": "2026-11-30",
-    "states_allowed": ["Madhya Pradesh"],
+    "states_allowed": [
+      "Madhya Pradesh"
+    ],
     "min_marks": 70,
     "income_limit": null,
-    "category_allowed": ["ALL"],
-    "gender_allowed": ["Female"],
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "Female"
+    ],
     "disability_requirement": "not_applicable",
-    "course_levels": ["UG"],
+    "course_levels": [
+      "UG"
+    ],
     "summary": "Recognises meritorious girl students from Madhya Pradesh who scored 70% or above in Class 12 and are enrolled in undergraduate programmes in the state.",
     "docs_required": [
       "Aadhaar Card",
@@ -873,6 +1004,99 @@
       "Bank Account Details"
     ],
     "source_type": "government",
-    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria."
+    "source_note": "Curated hackathon mock entry based on typical public scholarship criteria.",
+    "verification_status": "mock"
+  },
+  {
+    "id": "sc-043",
+    "name": "Post-Matric Scholarship for Scheduled Castes (National)",
+    "provider": "Ministry of Social Justice and Empowerment, Government of India",
+    "official_url": "https://scholarships.gov.in",
+    "source_url": "https://scholarships.gov.in",
+    "source_name": "National Scholarship Portal — Post-Matric Scholarship for SC",
+    "deadline": "2025-11-30",
+    "states_allowed": [
+      "ALL"
+    ],
+    "min_marks": null,
+    "income_limit": 250000,
+    "category_allowed": [
+      "SC"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
+    "disability_requirement": "not_applicable",
+    "course_levels": [
+      "Class 11",
+      "Class 12",
+      "UG",
+      "PG",
+      "Diploma"
+    ],
+    "summary": "Post-matric scholarship for Scheduled Caste students pursuing education at Class 11 level and above, with family income up to ₹2.5 lakh per annum. Centrally sponsored and distributed via states/UTs through the National Scholarship Portal.",
+    "docs_required": [
+      "Aadhaar Card",
+      "SC Caste Certificate (government-issued)",
+      "Income Certificate (family income ≤ ₹2.5 lakh)",
+      "Bank Account Details",
+      "Previous Year Marksheet",
+      "Institution Enrollment Proof"
+    ],
+    "source_type": "government",
+    "source_note": "Centrally sponsored scheme administered via NSP. States disburse funds; exact amounts and additional eligibility conditions vary by state.",
+    "verification_note": "No minimum marks requirement at the national level — min_marks set to null. Income limit of ₹2.5 lakh is the standard NSP-listed ceiling for this scheme. Deadline is approximate (typically October–November); verify current cycle on NSP. State-specific sub-conditions (e.g. Maharashtra may require 50% marks) cannot be captured in a single national record.",
+    "ambiguous_fields": [
+      "deadline",
+      "docs_required"
+    ],
+    "verification_status": "verified",
+    "last_verified_at": "2026-04-29"
+  },
+  {
+    "id": "sc-038",
+    "name": "National Scholarship for Persons with Disabilities (Post-Matric)",
+    "provider": "Department of Empowerment of Persons with Disabilities (DEPwD), Ministry of Social Justice and Empowerment",
+    "official_url": "https://scholarships.gov.in",
+    "source_url": "https://scholarships.gov.in",
+    "source_name": "National Scholarship Portal — DEPwD Post-Matric Scholarship for PwD",
+    "deadline": "2025-11-30",
+    "states_allowed": [
+      "ALL"
+    ],
+    "min_marks": null,
+    "income_limit": 250000,
+    "category_allowed": [
+      "ALL"
+    ],
+    "gender_allowed": [
+      "ALL"
+    ],
+    "disability_requirement": "required",
+    "course_levels": [
+      "Class 11",
+      "Class 12",
+      "UG",
+      "PG",
+      "Diploma"
+    ],
+    "summary": "Post-matric scholarship exclusively for students with benchmark disabilities (government-issued certificate of 40% or above), to support education at Class 11 level and above. Income limit ₹2.5 lakh/year.",
+    "docs_required": [
+      "Aadhaar Card",
+      "Disability Certificate (government-issued, ≥40% disability)",
+      "Income Certificate (family income)",
+      "Bank Account Details",
+      "Institution Enrollment Proof",
+      "Previous Year Marksheet"
+    ],
+    "source_type": "government",
+    "source_note": "DEPwD scheme distributed via NSP. Three sub-categories exist (pre-matric, post-matric, top-class); this record covers post-matric. Corresponds to mock entry sc-003.",
+    "verification_note": "No minimum academic marks criterion for this scheme — min_marks is null. The figure 40% refers exclusively to the disability certificate threshold (benchmark disability ≥40% as per the Rights of Persons with Disabilities Act, 2016), which is captured by disability_requirement: required and the docs_required list; it must NOT be interpreted as an academic score floor. Income limit of ₹2.5 lakh per annum (family) is well-established in NSP guidelines. Deadline is approximate (typically October–November); verify on NSP. Document list based on standard NSP requirements — exact docs may have changed in recent cycles. Top-class category for PwD students at premier institutions is a separate higher-value scheme.",
+    "ambiguous_fields": [
+      "deadline",
+      "docs_required"
+    ],
+    "verification_status": "verified",
+    "last_verified_at": "2026-04-29"
   }
 ]

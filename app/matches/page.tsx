@@ -58,6 +58,21 @@ const INCOME_LABELS: Record<string, string> = {
   above_8L:    "> ₹8L",
 };
 
+// ── Sort helpers ──────────────────────────────────────────────────────────────
+
+function verificationRank(sc: Scholarship): number {
+  if (sc.verification_status === "verified")      return 0;
+  if (sc.verification_status === "needs_review")  return 1;
+  return 2; // mock or absent
+}
+
+function sortPairs(pairs: Pair[]): Pair[] {
+  return [...pairs].sort((a, b) => {
+    if (b.result.score !== a.result.score) return b.result.score - a.result.score;
+    return verificationRank(a.scholarship) - verificationRank(b.scholarship);
+  });
+}
+
 // ── Small helpers ─────────────────────────────────────────────────────────────
 
 function NavBar() {
@@ -135,6 +150,34 @@ function ErrorState({ message, onRetry }: { message: string; onRetry: () => void
   );
 }
 
+function VerifiedOnlyEmptyState({ onShowAll }: { onShowAll: () => void }) {
+  return (
+    <div className="text-center py-24">
+      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/50 mb-5">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-600 dark:text-emerald-400">
+          <path d="M3 8.5l3.5 3.5 6.5-7" />
+        </svg>
+      </div>
+      <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">
+        No source-verified matches for this profile
+      </h3>
+      <p className="text-slate-500 dark:text-slate-400 text-sm mb-6 max-w-sm mx-auto leading-relaxed">
+        None of the currently source-verified scholarships match your profile criteria.
+        More records are being reviewed and will be added as they are confirmed.
+      </p>
+      <button
+        onClick={onShowAll}
+        className="bg-slate-900 hover:bg-slate-700 dark:bg-slate-100 dark:hover:bg-slate-300 dark:text-slate-900 text-white font-semibold px-6 py-2.5 rounded-xl text-sm transition-colors"
+      >
+        Show all records instead
+      </button>
+      <p className="mt-4 text-xs text-slate-400 dark:text-slate-600">
+        Under-review records are based on official scheme descriptions but are not yet source-verified.
+      </p>
+    </div>
+  );
+}
+
 function EmptyState() {
   return (
     <div className="text-center py-24">
@@ -160,6 +203,7 @@ export default function MatchesPage() {
   const router = useRouter();
   const [state, setState] = useState<PageState>({ phase: "loading" });
   const [showIneligible, setShowIneligible] = useState(false);
+  const [verifiedOnly,   setVerifiedOnly]   = useState(false);
 
   const runMatch = useCallback(async (profile: StudentProfile) => {
     setState({ phase: "loading" });
@@ -194,6 +238,7 @@ export default function MatchesPage() {
     let profile: StudentProfile;
     try { profile = JSON.parse(raw); } catch { router.replace("/profile"); return; }
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reading sessionStorage is browser-only; useEffect is the correct SSR-safe location
     runMatch(profile);
   }, [router, runMatch]);
 
@@ -230,15 +275,22 @@ export default function MatchesPage() {
 
   const { pairs, profile } = state;
 
-  // Group pairs by status, preserving backend score order within each group
+  // Apply verified-only filter, then sort each group: score desc → verified first
+  const displayPairs = verifiedOnly
+    ? pairs.filter((p) => p.scholarship.verification_status === "verified")
+    : pairs;
+
   const grouped = STATUS_ORDER.reduce<Record<MatchStatus, Pair[]>>(
-    (acc, s) => ({ ...acc, [s]: pairs.filter((p) => p.result.status === s) }),
+    (acc, s) => ({ ...acc, [s]: sortPairs(displayPairs.filter((p) => p.result.status === s)) }),
     {} as Record<MatchStatus, Pair[]>
   );
 
   const usefulCount =
     grouped.eligible.length + grouped.maybe_eligible.length;
-  const totalChecked = pairs.length;
+  const totalChecked  = pairs.length;
+  const verifiedCount = pairs.filter(
+    (p) => p.scholarship.verification_status === "verified"
+  ).length;
 
   // Show empty state if nothing useful was found
   const hasUseful = usefulCount > 0 || grouped.insufficient_data.length > 0;
@@ -253,19 +305,46 @@ export default function MatchesPage() {
           <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-1">
             Your scholarship matches
           </h1>
-          <p className="text-sm text-slate-500 dark:text-slate-400">
-            {usefulCount > 0
-              ? `${usefulCount} strong match${usefulCount === 1 ? "" : "es"} found · ${totalChecked} scholarships checked`
-              : `${totalChecked} scholarships checked · no strong matches yet`}
-            &nbsp;· Results are guidance only.
-          </p>
+          <div className="flex flex-wrap items-center gap-3 mt-1">
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              {verifiedOnly
+                ? `${displayPairs.length} verified record${displayPairs.length === 1 ? "" : "s"} shown · ${totalChecked} checked in total`
+                : usefulCount > 0
+                  ? `${usefulCount} strong match${usefulCount === 1 ? "" : "es"} found · ${totalChecked} scholarships checked`
+                  : `${totalChecked} scholarships checked · no strong matches yet`}
+              &nbsp;· Results are guidance only.
+            </p>
+            <button
+              onClick={() => setVerifiedOnly((v) => !v)}
+              className={[
+                "inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full border transition-colors",
+                verifiedOnly
+                  ? "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50"
+                  : "bg-slate-50 text-slate-500 border-slate-200 hover:border-slate-300 dark:bg-slate-800/40 dark:text-slate-500 dark:border-slate-700/50 dark:hover:border-slate-600",
+              ].join(" ")}
+              aria-pressed={verifiedOnly}
+            >
+              {verifiedOnly ? (
+                <>
+                  <svg width="9" height="9" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 8.5l3.5 3.5 6.5-7" />
+                  </svg>
+                  Verified only
+                </>
+              ) : (
+                "All records"
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Profile summary strip */}
         <ProfileStrip profile={profile} />
 
         {/* Results */}
-        {!hasUseful ? (
+        {verifiedOnly && displayPairs.length === 0 ? (
+          <VerifiedOnlyEmptyState onShowAll={() => setVerifiedOnly(false)} />
+        ) : !hasUseful ? (
           <EmptyState />
         ) : (
           <>
@@ -355,7 +434,7 @@ export default function MatchesPage() {
         <p className="mt-12 text-xs text-slate-400 dark:text-slate-500 text-center leading-relaxed">
           Results are guidance only, not official eligibility decisions.
           Always verify on each scholarship&apos;s official page before applying.
-          Dataset is a curated hackathon demo — not live data.
+          {" "}{verifiedCount} of {totalChecked} scholarships are source-verified · more are being reviewed and will be added progressively.
         </p>
       </div>
     </div>

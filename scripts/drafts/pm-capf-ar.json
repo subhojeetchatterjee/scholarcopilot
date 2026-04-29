@@ -1,0 +1,27 @@
+{
+  "name": "Prime Minister's Scholarship Scheme for Central Armed Police Forces and Assam Rifles",
+  "provider": "Ministry of Home Affairs (CAPF) / Ministry of Defence (Assam Rifles), Government of India",
+  "official_url": "https://scholarships.gov.in",
+  "source_url": "https://scholarships.gov.in",
+  "source_name": "National Scholarship Portal — PM Scholarship Scheme for CAPF & AR",
+  "deadline": "2025-10-31",
+  "states_allowed": ["ALL"],
+  "min_marks": 60,
+  "income_limit": null,
+  "category_allowed": ["ALL"],
+  "gender_allowed": ["ALL"],
+  "disability_requirement": "not_applicable",
+  "course_levels": ["UG", "Diploma"],
+  "summary": "Scholarship exclusively for wards and widows of Central Armed Police Forces (BSF, CRPF, CISF, ITBP, SSB, NSG) and Assam Rifles personnel. Provides ₹2,500–₹3,000/month depending on course type. No income ceiling. Requires a service/ex-service certificate from the parent's unit.",
+  "docs_required": [
+    "Aadhaar Card",
+    "Service Certificate / Ex-Service Certificate (from parent's CAPF/AR unit)",
+    "Class 12 Marksheet (minimum 60%)",
+    "Institution Enrollment Certificate (AICTE/UGC-approved institution)",
+    "Bank Account Details (student's own account)"
+  ],
+  "source_type": "government",
+  "source_note": "Centrally administered via NSP. Two sub-schemes: one under MHA for CAPF wards, one under Ministry of Defence for AR wards. Both available on NSP under the same scheme family.",
+  "verification_note": "No income limit — income_limit is null. The 60% min_marks in Class 12 is the well-cited eligibility floor for this scheme. Deadline is approximate; verify current cycle on NSP. The service certificate requirement (parent must be serving or ex-CAPF/AR personnel) cannot be checked by the match engine's StudentProfile fields — this record will correctly return insufficient_data for all users, which is the intended behaviour. Two sub-categories exist (professional ₹3,000/month, non-professional ₹2,500/month); this record is the umbrella entry.",
+  "ambiguous_fields": ["deadline"]
+}

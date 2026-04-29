@@ -53,6 +53,7 @@ export default function MatchSection({ id }: Props) {
       const rawProfile = sessionStorage.getItem("sc_profile");
       if (rawProfile) {
         profileData = JSON.parse(rawProfile) as StudentProfile;
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- reading sessionStorage is browser-only; useEffect is the correct SSR-safe location
         setProfile(profileData);
       }
 

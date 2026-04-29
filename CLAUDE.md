@@ -8,6 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 npm run dev      # start dev server at http://localhost:3000
 npm run build    # production build
 npm run lint     # run ESLint (eslint.config.mjs, Next.js config)
+npx tsc --noEmit # type-check without emitting files
 ```
 
 No test runner is configured. The match engine has inline test profiles in `lib/matchEngine.ts` (exported as `TEST_PROFILES`) with expected outputs documented in comments. To exercise them you need `tsx` or `ts-node`:
@@ -36,8 +37,60 @@ No server-side session or database. All state lives in the browser's `sessionSto
 | `lib/matchEngine.ts` | Pure, deterministic rule engine — no AI. Returns `MatchResult[]` sorted by score. Hard fails short-circuit immediately; missing fields increment `missingCount` and cap the score. |
 | `lib/validators.ts` | Zod schemas. `StudentProfileSchema` handles CGPA→percentage normalisation via `conversion_method`. All API routes use `safeParse` + `formatZodError`. |
 | `lib/claudeClient.ts` | Thin wrapper around `@anthropic-ai/sdk`. Single `callClaude()` function; system prompt is always sent with `cache_control: { type: "ephemeral" }` for prompt caching. |
-| `data/scholarships.json` | Static dataset (~35 entries). Loaded at module level in `/api/match/route.ts` and converted once to a `Map` keyed by `id`. To add a scholarship, extend this file following the `Scholarship` interface. |
+| `data/scholarships.json` | Production dataset. 31 records total: 2 `verified` (sc-038, sc-043), 29 `mock`. Removed records: 6 institution-specific mocks (sc-015, sc-025, sc-028, sc-029, sc-033, sc-034) + sc-003 (superseded by verified sc-038). Real verified entries are added via the ingestion pipeline below. |
+| `data/scholarships-staging.json` | Staging area. 9 records awaiting human review — all blocked because their deadlines are 2025-cycle (past as of April 2026). Each record's `verification_note` opens with `[DEADLINE STALE — April 2026]`. Do not promote until the current-cycle deadline is confirmed on the source portal. |
 | `app/api/*/route.ts` | All route handlers follow the same pattern: parse JSON → `safeParse` with Zod → call logic → return `NextResponse.json`. |
+| `components/VerificationBadge.tsx` | Shared pill component rendering verification status in three variants: `verified` (emerald + checkmark), `needs_review` (slate + clock), `mock` (amber + info icon). Used in `ScholarshipCard` and the detail page. |
+| `scripts/add-scholarship.ts` | Ingestion CLI — validates a draft JSON, assigns the next `sc-NNN` ID, timestamps it, and appends to `data/scholarships-staging.json`. Use `--template` to print a blank draft, `--list-staging` to list staged records, `--promote sc-NNN` to move a record to production. |
+| `scripts/audit-scholarships.ts` | Developer audit report — run with `npx tsx scripts/audit-scholarships.ts`. Outputs production counts by status, under-review records by source type with ambiguous field flags, staged replacement map (including production-level superseding), staging deadline status, and 4 priority buckets for the next verification pass. |
+
+### Scholarship data ingestion
+
+**Schema** — `types/index.ts` `Scholarship` interface. The match engine reads the core fields only; verification metadata fields are all optional and backward-compatible.
+
+**Verification status values:**
+
+| `verification_status` | Meaning |
+|---|---|
+| `"mock"` | Hackathon placeholder — criteria approximated, not source-verified |
+| `"needs_review"` | Real scholarship in staging; awaits human spot-check against `source_url` |
+| `"verified"` | Manually confirmed against `source_url` and promoted to production |
+
+**Adding a real scholarship (step-by-step):**
+
+```bash
+# 1. Get a blank template
+npx tsx scripts/add-scholarship.ts --template > my-draft.json
+
+# 2. Fill every field — especially source_url (the exact page where you read the criteria)
+#    Use scripts/scholarship-template.json as an annotated reference.
+
+# 3. Stage the record (validates required fields, assigns ID, timestamps)
+npx tsx scripts/add-scholarship.ts my-draft.json
+
+# 4. Check what's waiting in staging
+npx tsx scripts/add-scholarship.ts --list-staging
+
+# 5. Second person reviews: open source_url, cross-check every field manually
+#    Edit the staging record directly if corrections are needed.
+
+# 6. Promote to production
+npx tsx scripts/add-scholarship.ts --promote sc-037
+```
+
+**Key validation rules enforced by the script:**
+- `source_url` must be a full `https://` URL (not the root domain — the exact criteria page)
+- `deadline` must be `YYYY-MM-DD`
+- `course_levels` must be a subset of `[Class 11, Class 12, UG, PG, Diploma]`
+- `source_type` must be one of `[government, ngo, private, institution]`
+- `disability_requirement` must be one of `[required, preferred, not_applicable]`
+- `min_marks` and `income_limit` must be a number **or `null`** (null = no requirement). The validator accepts null explicitly — do not treat it as missing.
+
+**Never edit `data/scholarships.json` directly** for new real entries — always go through the staging pipeline so every record has a `source_url` and a `last_verified_at` timestamp.
+
+**Semantic correctness rule:** `min_marks` must represent an academic score floor, not a disability certificate percentage or any other threshold. For DEPwD/PwD schemes, the 40% figure refers to the disability certificate requirement — that belongs in `disability_requirement: "required"` and `docs_required`, never in `min_marks`. If a scheme has no academic floor, set `min_marks: null`.
+
+**Draft files** go in `scripts/drafts/` (gitignored source of truth for staged records before ingestion). Each draft file should be removed or archived after successful staging.
 
 ### Match engine scoring
 
@@ -63,6 +116,57 @@ For `not_eligible`, score = `min(max(0, accumulatedScore − 60), 39)`. Zero onl
 
 - Scholarships requiring a "service certificate" doc always return `insufficient_data` because `StudentProfile` has no field for parent/guardian service status.
 - Income uses a three-way band comparison — overlapping bands produce `maybe_eligible`, not a hard fail.
+
+### Match sort order
+
+Within each status group on `/matches`, pairs are sorted by:
+
+1. **Score descending** (primary) — higher match score first
+2. **Verification rank ascending** (secondary, tie-breaker) — `verified` (0) before `needs_review` (1) before `mock`/absent (2)
+
+This is implemented in `sortPairs()` in `app/matches/page.tsx` and applied per group after filtering. The sort does not change eligibility status or score values.
+
+A **"Verified only" toggle** on the matches page filters `displayPairs` to `verification_status === "verified"` before grouping. It is off by default. The subtitle copy adapts per toggle state:
+
+| Toggle state | Subtitle format |
+|---|---|
+| Off, strong matches exist | `N strong matches found · M scholarships checked` |
+| Off, no strong matches | `M scholarships checked · no strong matches yet` |
+| On | `N verified records shown · M checked in total` |
+
+`displayPairs.length` drives the verified count; `totalChecked` (`pairs.length`) always reflects the full unfiltered dataset so users know the filter is a subset.
+
+### Verification UI
+
+`components/VerificationBadge.tsx` renders a small pill for any `VerificationStatus` value:
+
+| Status | Appearance | Badge wording | Detail page label |
+|--------|------------|---------------|-------------------|
+| `verified` | Emerald, checkmark icon | "Source verified" | **Source verified:** |
+| `needs_review` | Slate/muted, clock icon | "Pending verification" | **Pending verification:** |
+| `mock` / absent | Amber, info icon | "Under review" | **Under review:** |
+
+Badge wording and detail page prose labels are kept intentionally consistent. Do not change one without updating the other.
+
+**Where the badge appears:**
+- `ScholarshipCard` — bottom of card, `xs` size, same visual weight as tag pills
+- `/scholarship/[id]` header — inline with the source-type pill and deadline badge, `sm` size
+
+**Transparency section on the detail page** is status-aware:
+- `verified` — green-tinted panel; shows `source_name`, `last_verified_at` (formatted date), and a "View source ↗" link to `source_url`; shows `verification_note` if present
+- `needs_review` — amber panel; notes the record is sourced from an official portal but not yet spot-checked; shows `source_name` if available
+- `mock` — amber panel; states the record is based on official scheme information but not yet source-verified; tells users to confirm on the official page before applying
+
+All three variants use Tailwind `dark:` classes and work in both themes.
+
+**Trust messaging — homepage (`app/page.tsx`):**
+The third card in the "Built with transparency" section (`TRUST` array) renders dynamically: it imports `data/scholarships.json` at module level, counts `verification_status === "verified"` records, and renders `"N of M scholarships have been manually verified against official government sources…"`. This updates automatically when records are promoted — no code change needed.
+
+**Trust messaging — matches page (`app/matches/page.tsx`):**
+The bottom ethics note renders: `"N of M scholarships are source-verified · more are being reviewed and will be added progressively."` where N = `verifiedCount` (computed from `pairs`) and M = `totalChecked` (`pairs.length`).
+
+**Verified-only empty state (`app/matches/page.tsx`):**
+When the "Verified only" toggle is active and `displayPairs.length === 0`, a `VerifiedOnlyEmptyState` component renders instead of the normal empty state. It explains that no source-verified scholarships match the current profile and offers a "Show all records instead" button that calls `setVerifiedOnly(false)`. A secondary line clarifies what under-review records are.
 
 ### AI routes
 
@@ -100,7 +204,13 @@ UPSTASH_REDIS_REST_URL=https://<your-db>.upstash.io
 UPSTASH_REDIS_REST_TOKEN=<your-token>
 ```
 
-These are read by `Redis.fromEnv()` in `lib/rateLimit.ts`. Get both values from the Upstash console after creating a Redis database (or via the Upstash integration in the Vercel marketplace).
+These are read in `lib/rateLimit.ts`. The module applies different behaviour based on `NODE_ENV`:
+
+- **`production` + missing vars** → module throws at startup (`Error: UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN must be set in production`). The Vercel function cold-starts will fail immediately and visibly — rate limiting cannot be silently skipped in production.
+- **non-production + missing vars** → fail-open: all checks return `null` with a one-time `console.warn`. Local dev works without Upstash credentials.
+- **vars present (any env)** → normal rate limiting enforced.
+
+Get the values from the Upstash console after creating a Redis database (or via the Upstash integration in the Vercel marketplace).
 
 ### Multilingual support
 
@@ -127,6 +237,16 @@ Dark mode is implemented via Tailwind `dark:` classes. A blocking inline script 
 `fp` = profile fingerprint — a pipe-joined string of all fields that appear in AI payloads (`full_name`, `age`, `state`, `class_or_degree`, `institution_type`, `annual_family_income_range`, `category`, `gender`, `disability_status`, `normalized_percentage`, `preferred_language`, `career_goal`). Changing any profile field invalidates all cached outputs.
 
 On mount, `MatchSection` restores any unexpired cached outputs directly to their success state. On button click, cache is checked before any `fetch()` call; only successful API responses are stored.
+
+### Lint suppressions
+
+Three `react-hooks/set-state-in-effect` errors are suppressed with `// eslint-disable-next-line` comments in:
+
+- `components/ThemeToggle.tsx` — `setDark()` after reading `localStorage`
+- `app/scholarship/[id]/MatchSection.tsx` — `setProfile()` after reading `sessionStorage`
+- `app/matches/page.tsx` — `runMatch()` after reading `sessionStorage`
+
+All three are false positives: `localStorage`/`sessionStorage` are browser-only APIs unavailable during SSR — `useEffect` is the only correct location for them in Next.js. Do not remove these suppressions without also restructuring the reads to be SSR-safe.
 
 ### `@/` path alias
 
