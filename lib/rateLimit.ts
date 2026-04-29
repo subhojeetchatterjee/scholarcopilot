@@ -17,7 +17,8 @@ if (IS_PROD && (!UPSTASH_URL || !UPSTASH_TOKEN)) {
 // Fail open only in non-production environments when vars are absent.
 const DEV_MODE = !IS_PROD && (!UPSTASH_URL || !UPSTASH_TOKEN);
 
-let BURST:  Ratelimit;
+let BURST:         Ratelimit;
+let HOURLY_GLOBAL: Ratelimit;
 let HOURLY: Record<"explain" | "followup" | "draft-answer" | "translate", Ratelimit>;
 let warnedOnce = false;
 
@@ -29,6 +30,13 @@ if (!DEV_MODE) {
     redis,
     limiter: Ratelimit.slidingWindow(3, "1 m"),
     prefix: "rl:burst",
+  });
+
+  // Shared hourly cap: 12 requests per hour per IP across all AI routes combined.
+  HOURLY_GLOBAL = new Ratelimit({
+    redis,
+    limiter: Ratelimit.slidingWindow(12, "1 h"),
+    prefix: "rl:hourly-global",
   });
 
   // Per-route hourly quotas.
@@ -48,6 +56,10 @@ function clientIP(req: NextRequest): string {
   );
 }
 
+function retryAfterSeconds(resetMs: number): string {
+  return String(Math.max(1, Math.ceil((resetMs - Date.now()) / 1000)));
+}
+
 function rateLimitedResponse(limit: number, reset: number): NextResponse {
   return NextResponse.json(
     { error: "Rate limit exceeded. Please try again later." },
@@ -57,14 +69,30 @@ function rateLimitedResponse(limit: number, reset: number): NextResponse {
         "X-RateLimit-Limit":     String(limit),
         "X-RateLimit-Remaining": "0",
         "X-RateLimit-Reset":     String(reset),
+        "Retry-After":           retryAfterSeconds(reset),
+      },
+    }
+  );
+}
+
+function globalHourlyLimitedResponse(limit: number, reset: number): NextResponse {
+  return NextResponse.json(
+    { error: "Hourly AI usage limit reached. Please try again later." },
+    {
+      status: 429,
+      headers: {
+        "X-RateLimit-Limit":     String(limit),
+        "X-RateLimit-Remaining": "0",
+        "X-RateLimit-Reset":     String(reset),
+        "Retry-After":           retryAfterSeconds(reset),
       },
     }
   );
 }
 
 /**
- * Checks both the shared burst limit and the route-specific hourly quota.
- * Returns a 429 NextResponse if either is exceeded, or null if the request is allowed.
+ * Checks three layers in order: shared burst → shared hourly global cap → route-specific hourly quota.
+ * Returns a 429 NextResponse if any layer is exceeded, or null if the request is allowed.
  * In development with missing Upstash env vars, always returns null (fail open).
  *
  * Usage: const blocked = await checkRateLimit(req, "explain");
@@ -86,6 +114,9 @@ export async function checkRateLimit(
 
   const burst = await BURST!.limit(ip);
   if (!burst.success) return rateLimitedResponse(burst.limit, burst.reset);
+
+  const globalHourly = await HOURLY_GLOBAL!.limit(ip);
+  if (!globalHourly.success) return globalHourlyLimitedResponse(globalHourly.limit, globalHourly.reset);
 
   const hourly = await HOURLY![route].limit(ip);
   if (!hourly.success) return rateLimitedResponse(hourly.limit, hourly.reset);
