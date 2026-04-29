@@ -5,6 +5,7 @@ import type { MatchResult, Scholarship, StudentProfile } from "@/types";
 import MatchBadge from "@/components/MatchBadge";
 import LanguageSelector from "@/components/LanguageSelector";
 import AIAnswerPanel from "@/components/AIAnswerPanel";
+import { getCached, setCached, profileFingerprint as mkFingerprint } from "@/lib/aiCache";
 
 interface Props {
   id: string;
@@ -46,6 +47,20 @@ export default function MatchSection({ id }: Props) {
 
   useEffect(() => {
     try {
+      let profileData: StudentProfile | null = null;
+      let followupAlreadyDone = false;
+
+      const rawProfile = sessionStorage.getItem("sc_profile");
+      if (rawProfile) {
+        profileData = JSON.parse(rawProfile) as StudentProfile;
+        setProfile(profileData);
+      }
+
+      if (sessionStorage.getItem(`sc_followup_${id}`)) {
+        followupAlreadyDone = true;
+        setFollowupDone(true);
+      }
+
       const rawMatch = sessionStorage.getItem("sc_match_response");
       if (rawMatch) {
         const { results, scholarships } = JSON.parse(rawMatch) as {
@@ -56,16 +71,40 @@ export default function MatchSection({ id }: Props) {
         if (idx !== -1) {
           setResult(results[idx]);
           setScholarship(scholarships[idx] ?? null);
+
+          // Restore cached AI outputs so revisiting the page shows prior results instantly
+          if (profileData) {
+            const fp = mkFingerprint(profileData);
+
+            const cachedExplain = getCached(`sc_ai:explain:${id}:${fp}`);
+            if (cachedExplain) {
+              setExplanation(cachedExplain);
+              setExplainSource(cachedExplain);
+              setExplainLang(profileData.preferred_language ?? "en");
+              setExplainState("success");
+            }
+
+            const cachedDraft = getCached(`sc_ai:draft:${id}:${fp}`);
+            if (cachedDraft) {
+              setDraftAnswer(cachedDraft);
+              setDraftSource(cachedDraft);
+              setDraftLang(profileData.preferred_language ?? "en");
+              setDraftState("success");
+            }
+
+            if (!followupAlreadyDone) {
+              const cachedFollowup = getCached(`sc_ai:followup:${id}:${fp}`);
+              if (cachedFollowup) {
+                const qs: string[] = JSON.parse(cachedFollowup);
+                if (qs.length > 0) {
+                  setQuestions(qs);
+                  setAnswers(qs.map(() => ""));
+                  setFollowupState("success");
+                }
+              }
+            }
+          }
         }
-      }
-
-      const rawProfile = sessionStorage.getItem("sc_profile");
-      if (rawProfile) {
-        setProfile(JSON.parse(rawProfile) as StudentProfile);
-      }
-
-      if (sessionStorage.getItem(`sc_followup_${id}`)) {
-        setFollowupDone(true);
       }
     } catch {
       // sessionStorage unavailable or invalid JSON — silently degrade
@@ -85,6 +124,17 @@ export default function MatchSection({ id }: Props) {
     if (!scholarship) {
       setExplainState("error");
       setExplainError("Scholarship data not found. Return to matches and try again.");
+      return;
+    }
+
+    const fp = mkFingerprint(profile);
+    const cacheKey = `sc_ai:explain:${id}:${fp}`;
+    const cached = getCached(cacheKey);
+    if (cached) {
+      setExplanation(cached);
+      setExplainSource(cached);
+      setExplainLang(profile.preferred_language ?? "en");
+      setExplainState("success");
       return;
     }
 
@@ -113,6 +163,7 @@ export default function MatchSection({ id }: Props) {
       setExplainSource(text);
       setExplainLang(profile.preferred_language ?? "en");
       setExplainState("success");
+      setCached(cacheKey, text);
     } catch (err) {
       setExplainError(
         err instanceof Error ? err.message : "Something went wrong. Please try again."
@@ -135,6 +186,17 @@ export default function MatchSection({ id }: Props) {
     }
 
     if (result?.status === "not_eligible") {
+      return;
+    }
+
+    const fp = mkFingerprint(profile);
+    const cacheKey = `sc_ai:draft:${id}:${fp}`;
+    const cached = getCached(cacheKey);
+    if (cached) {
+      setDraftAnswer(cached);
+      setDraftSource(cached);
+      setDraftLang(profile.preferred_language ?? "en");
+      setDraftState("success");
       return;
     }
 
@@ -164,6 +226,7 @@ export default function MatchSection({ id }: Props) {
       setDraftSource(answer);
       setDraftLang(profile.preferred_language ?? "en");
       setDraftState("success");
+      setCached(cacheKey, answer);
     } catch (err) {
       setDraftError(
         err instanceof Error ? err.message : "Something went wrong. Please try again."
@@ -179,7 +242,12 @@ export default function MatchSection({ id }: Props) {
     setLang: (l: "en" | "hi" | "bn") => void,
     setTranslating: (b: boolean) => void,
     setError: (e: string) => void,
+    cacheKey: string | null = null,
   ) {
+    if (cacheKey) {
+      const cached = getCached(cacheKey);
+      if (cached) { setText(cached); setLang(targetLang); return; }
+    }
     setTranslating(true);
     setError("");
     try {
@@ -195,6 +263,7 @@ export default function MatchSection({ id }: Props) {
       const { translation } = await res.json() as { translation: string };
       setText(translation);
       setLang(targetLang);
+      if (cacheKey) setCached(cacheKey, translation);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Translation failed.");
     } finally {
@@ -204,16 +273,35 @@ export default function MatchSection({ id }: Props) {
 
   function handleExplainLangChange(lang: "en" | "hi" | "bn") {
     if (lang === explainLang || explainTranslating) return;
-    translate(explainSource, lang, setExplanation, setExplainLang, setExplainTranslating, setExplainTranslateError);
+    const fp = profile ? mkFingerprint(profile) : null;
+    const cacheKey = fp ? `sc_ai:translate:explain:${id}:${fp}:${lang}` : null;
+    translate(explainSource, lang, setExplanation, setExplainLang, setExplainTranslating, setExplainTranslateError, cacheKey);
   }
 
   function handleDraftLangChange(lang: "en" | "hi" | "bn") {
     if (lang === draftLang || draftTranslating) return;
-    translate(draftSource, lang, setDraftAnswer, setDraftLang, setDraftTranslating, setDraftTranslateError);
+    const fp = profile ? mkFingerprint(profile) : null;
+    const cacheKey = fp ? `sc_ai:translate:draft:${id}:${fp}:${lang}` : null;
+    translate(draftSource, lang, setDraftAnswer, setDraftLang, setDraftTranslating, setDraftTranslateError, cacheKey);
   }
 
   async function handleFetchFollowup() {
     if (!profile || !scholarship || !result) return;
+
+    const fp = mkFingerprint(profile);
+    const cacheKey = `sc_ai:followup:${id}:${fp}`;
+    const cachedRaw = getCached(cacheKey);
+    if (cachedRaw) {
+      try {
+        const qs: string[] = JSON.parse(cachedRaw);
+        if (qs.length === 0) { setFollowupDone(true); return; }
+        setQuestions(qs);
+        setAnswers(qs.map(() => ""));
+        setFollowupState("success");
+        return;
+      } catch { /* corrupted entry — fall through to API */ }
+    }
+
     setFollowupState("loading");
     setFollowupError("");
     try {
@@ -232,6 +320,7 @@ export default function MatchSection({ id }: Props) {
         throw new Error(data.message ?? `Server error ${res.status}`);
       }
       const { questions: qs } = await res.json() as { questions: string[] };
+      setCached(cacheKey, JSON.stringify(qs));
       if (qs.length === 0) {
         // Nothing to ask — unlock AI tools immediately
         setFollowupDone(true);
@@ -279,10 +368,17 @@ export default function MatchSection({ id }: Props) {
             </div>
           </div>
 
+          {/* Partial-match context note: shown when some dimensions aligned but a hard blocker fired */}
+          {result.status === "not_eligible" && result.score > 0 && (
+            <p className="text-xs text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800/40 rounded-lg px-3 py-2 mb-5">
+              Some profile details align with this scholarship, but one or more hard requirements are not met.
+            </p>
+          )}
+
           {result.match_reasons.length > 0 && (
             <div className="mb-5">
               <p className="text-[10px] font-bold text-green-700 dark:text-green-500 uppercase tracking-[0.1em] mb-3">
-                Why this matched
+                {result.status === "not_eligible" ? "Aligned with your profile" : "Why this matched"}
               </p>
               <ul className="space-y-2">
                 {result.match_reasons.map((r) => (
@@ -299,13 +395,24 @@ export default function MatchSection({ id }: Props) {
 
           {result.missing_reasons.length > 0 && (
             <div className={result.match_reasons.length > 0 ? "pt-5 border-t border-slate-100 dark:border-slate-800" : ""}>
-              <p className="text-[10px] font-bold text-amber-700 dark:text-amber-500 uppercase tracking-[0.1em] mb-3">
-                Unclear or missing
+              <p className={`text-[10px] font-bold uppercase tracking-[0.1em] mb-3 ${
+                result.status === "not_eligible"
+                  ? "text-rose-700 dark:text-rose-400"
+                  : "text-amber-700 dark:text-amber-500"
+              }`}>
+                {result.status === "not_eligible" ? "Why not eligible" : "Unclear or missing"}
               </p>
               <ul className="space-y-2">
                 {result.missing_reasons.map((r) => (
                   <li key={r} className="flex items-start gap-2.5 text-sm text-slate-600 dark:text-slate-400">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 dark:bg-amber-500 flex-shrink-0 mt-[0.45em]" aria-hidden />
+                    {result.status === "not_eligible" ? (
+                      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="text-rose-500 dark:text-rose-400 mt-0.5 flex-shrink-0" aria-hidden>
+                        <circle cx="8" cy="8" r="6.5"/>
+                        <path d="M5.5 5.5l5 5M10.5 5.5l-5 5"/>
+                      </svg>
+                    ) : (
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400 dark:bg-amber-500 flex-shrink-0 mt-[0.45em]" aria-hidden />
+                    )}
                     {r}
                   </li>
                 ))}

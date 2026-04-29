@@ -45,7 +45,7 @@ const GROUP_META: Record<
   },
   not_eligible: {
     label: "Not Eligible",
-    desc: "You don't meet the stated criteria. Shown for transparency.",
+    desc: "Some profile details align, but one or more required criteria are not met. Shown for transparency.",
     pill: "bg-red-50 text-red-600 border-red-200 dark:bg-rose-950 dark:text-rose-400 dark:border-rose-800",
   },
 };

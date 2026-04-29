@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { callClaude } from "@/lib/claudeClient";
+import { checkRateLimit } from "@/lib/rateLimit";
 import type { ExplainRequest } from "@/types";
 
 // Minimal Zod schema — trusts that the client sends valid types/index.ts shapes.
@@ -66,6 +67,8 @@ Rules you must follow:
 - Be concise: 3–5 short paragraphs or a brief structured section. Use **bold** for key terms if helpful.
 - Explain the key reasons they matched or did not match, using the provided match_reasons and missing_reasons.
 - If there are missing_reasons, clearly state what must be verified or provided — be direct and factual.
+- For not_eligible results where match_reasons is non-empty: structure the note in two parts — (1) 1–2 sentences acknowledging the aligned dimensions from match_reasons, then (2) a clear statement of the blocking criteria from missing_reasons, introduced with a transition such as "However, one required criterion is not met:". This is a partial match with a hard blocker, not a total mismatch. Do not ignore the matched aspects.
+- For not_eligible results where match_reasons is empty: treat it as a near-total mismatch and focus entirely on the blocking criteria.
 - End with a single static recommended next step (e.g., "Recommended next step: verify X on the official page before applying.").
 - Do not invent eligibility criteria not present in the scholarship data.`;
 }
@@ -117,6 +120,9 @@ Write a scholarship eligibility evaluation note based on the data above. Be fact
 }
 
 export async function POST(req: NextRequest) {
+  const blocked = await checkRateLimit(req, "explain");
+  if (blocked) return blocked;
+
   let body: unknown;
   try {
     body = await req.json();

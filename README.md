@@ -1,6 +1,15 @@
 # ScholarCopilot
 
-Find scholarships you actually qualify for — built for Indian students in Class 11, Class 12, and undergraduate college.
+ScholarCopilot helps Indian students discover scholarships they are actually likely to qualify for. It combines structured profile collection, rule-based scholarship matching, and AI-assisted guidance to make scholarship discovery clearer, faster, and safer.
+
+## What it does
+
+- Collects student profile information through a multi-step flow
+- Matches students to scholarships using rule-based eligibility logic
+- Explains why a scholarship matched or did not fully match
+- Asks follow-up questions only when important eligibility details are missing
+- Helps draft scholarship application answers when appropriate
+- Supports multilingual output in English, Hindi, and Bengali
 
 ## Setup
 
@@ -18,35 +27,40 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Pages
+## Main routes
 
 | Route | Description |
 |-------|-------------|
 | `/` | Landing page |
 | `/profile` | Multi-step student profile form |
 | `/matches` | Ranked scholarship matches |
-| `/scholarship/[id]` | Scholarship detail, checklist, and AI features |
+| `/scholarship/[id]` | Scholarship detail page with checklist and AI-powered guidance |
 
-## API Routes
+## API routes
 
 | Route | Description |
 |-------|-------------|
 | `POST /api/profile` | Submit student profile |
-| `POST /api/match` | Run rule-based matching |
-| `POST /api/explain` | Claude: explain match result |
-| `POST /api/followup` | Claude: ask follow-up questions for missing data |
-| `POST /api/draft-answer` | Claude: draft application answer |
-| `POST /api/translate` | Claude: translate content to EN / HI / BN |
+| `POST /api/match` | Run rule-based scholarship matching |
+| `POST /api/explain` | Generate an explanation of the match result |
+| `POST /api/followup` | Generate follow-up questions for missing eligibility details |
+| `POST /api/draft-answer` | Draft a scholarship application answer |
+| `POST /api/translate` | Translate content into English, Hindi, or Bengali |
 
-## Ethics Notice
+## Ethics and safety
 
-- Results are guidance only, not official eligibility decisions.
-- Always verify on the official scholarship page.
-- The app uses only information you provide — nothing is inferred.
-- Missing data is shown as "insufficient data", never guessed.
+- Results are guidance only, not official eligibility decisions
+- Always verify eligibility on the official scholarship page
+- The app only uses information provided by the student
+- Missing information is shown as "insufficient data" instead of being guessed
 
-## Stack
+## Tech stack
 
 - [Next.js](https://nextjs.org) (App Router)
 - [Tailwind CSS](https://tailwindcss.com)
-- [Anthropic SDK](https://www.npmjs.com/package/@anthropic-ai/sdk) (Claude-powered features)
+- [Anthropic SDK](https://www.npmjs.com/package/@anthropic-ai/sdk)
+
+## Notes
+
+This project was built as part of a hackathon prototype focused on making scholarship access more transparent and student-friendly.
+Built by Subhojeet Chatterjee and Mahendra Mahale (Reverse Curse Gang)

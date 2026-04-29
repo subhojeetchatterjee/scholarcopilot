@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { callClaude } from "@/lib/claudeClient";
+import { checkRateLimit } from "@/lib/rateLimit";
 
 const FollowUpRequestSchema = z.object({
   profile: z.object({
@@ -54,6 +55,9 @@ function buildProfileSummary(profile: z.infer<typeof FollowUpRequestSchema>["pro
 }
 
 export async function POST(req: NextRequest) {
+  const blocked = await checkRateLimit(req, "followup");
+  if (blocked) return blocked;
+
   let body: unknown;
   try {
     body = await req.json();

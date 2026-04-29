@@ -47,12 +47,18 @@ function normalizeCourseLevel(raw: string): CourseLevel | null {
   return null;
 }
 
+// Score cap for not_eligible results — keeps them visually distinct from
+// maybe_eligible (capped at 70) while still reflecting partial compatibility.
+const NOT_ELIGIBLE_CAP = 39;
+
 // ── Core matching function ────────────────────────────────────────────────────
 
 function matchOne(profile: Partial<StudentProfile>, sc: Scholarship): MatchResult {
   const matchR:   string[] = [];
   const missingR: string[] = [];
-  let score        = 60; // base — awarded only if no hard fail
+  // Base 60 is only carried through to the final score when there are no hard
+  // blockers. For not_eligible results, score = accumulated bonuses only (score − 60).
+  let score        = 60;
   let missingCount = 0;
   const hardFails:        string[] = [];
   const structuralMissing: string[] = [];
@@ -207,13 +213,18 @@ function matchOne(profile: Partial<StudentProfile>, sc: Scholarship): MatchResul
   }
 
   // ── EARLY RETURN on hard fails ────────────────────────────────────────────
+  // Status is driven by blockers; score is computed independently from the
+  // bonuses that DID accumulate (score − 60 strips the base that only applies
+  // when no blocker fires), capped so not_eligible cards never look stronger
+  // than a maybe_eligible result.
   if (hardFails.length > 0) {
+    const compatScore = Math.min(Math.max(0, score - 60), NOT_ELIGIBLE_CAP);
     return {
       scholarship_id: sc.id,
       status: "not_eligible",
-      score: 0,
-      match_reasons: [],
-      missing_reasons: hardFails,
+      score: compatScore,
+      match_reasons: matchR,
+      missing_reasons: [...hardFails, ...missingR],
     };
   }
 
@@ -291,28 +302,35 @@ export function matchScholarships(
 //
 // A vs sc-013 (Maharashtra, Class 11/12/UG, SC/ST/OBC/NT, marks 50, income 2.5L)
 //   state Maharashtra ✓(+15), Class 12 ✓, category General ∉ [SC,ST,OBC,NT]
-//   → HARD FAIL → not_eligible, score 0
+//   → HARD FAIL (category). matchR has state+course+gender+income.
+//   bonuses = +15(state) +10(marks≥60) +5(deadline) = 30 → score min(30,39) = 30
 //
 // A vs sc-001 (ALL, UG/PG, marks 80, income 4.5L)
-//   Class 12 ∉ [UG, PG] → HARD FAIL → not_eligible, score 0
+//   Class 12 ∉ [UG, PG] → HARD FAIL (course). matchR has state+category+gender+income.
+//   bonuses = 0(state ALL) +0(marks meets 80 but <90) +5(deadline) = 5 → score 5
 //
 // B vs sc-026 (Bihar, Class 11/12/UG, SC, marks 45, income 2.5L)
 //   state Bihar ✓(+15), UG ✓, SC ✓(+10), gender ALL, marks 68≥45(+10 bonus),
 //   income below_1L max=100k ≤ 250k ✓, +5 deadline → score 100, eligible
 //
 // B vs sc-001 (ALL, UG/PG, marks 80, income 4.5L)
-//   marks 68 < 80 → HARD FAIL → not_eligible, score 0
+//   marks 68 < 80 → HARD FAIL (marks). matchR has state+course+category+gender+income.
+//   bonuses = 0(state ALL) +0(no marks bonus, hard fail) +5(deadline) = 5 → score 5
 //
 // B vs sc-007 (ALL, UG/PG, marks 50, income 6L, ALL)
 //   state ALL, UG ✓, category ALL, gender ALL, marks 68≥50(+10 bonus),
 //   income below_1L ≤ 600k ✓, +5 deadline → score 75, eligible
 //
 // C vs sc-003 (ALL, all levels, marks 40, income 2.5L, disability required)
-//   income 2.5L-5L min=250001 > income_limit 250000 → HARD FAIL → not_eligible
+//   income 2.5L-5L min=250001 > income_limit 250000 → HARD FAIL (income).
+//   matchR has state+course+category+gender+marks+disability.
+//   bonuses = 0(state ALL) +10(marks 66.5≥50+10) +5(deadline) = 15 → score 15
 //
 // C vs sc-034 (Delhi, UG/PG/Diploma, marks 60, income 2L, disability preferred)
-//   state Delhi ✓(+15), UG ✓, category ALL, gender ALL,
-//   marks 55 < 60 → HARD FAIL → not_eligible, score 0
+//   state Delhi ✓(+15), UG ✓, marks 55 < 60 → HARD FAIL (marks).
+//   income 2.5L-5L min=250001 > 200000 → HARD FAIL (income).
+//   matchR has state+course+category+gender+disability_preferred.
+//   bonuses = +15(state) +5(disability preferred) +5(deadline) = 25 → score 25
 //
 // C vs sc-010 (ALL, UG/Diploma, Female, no marks, income 8L)
 //   state ALL, UG ✓, category ALL, gender Female ✓, no min_marks ✓,

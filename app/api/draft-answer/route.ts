@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { callClaude } from "@/lib/claudeClient";
+import { checkRateLimit } from "@/lib/rateLimit";
 import type { DraftAnswerRequest } from "@/types";
 
 const DraftAnswerRequestSchema = z.object({
@@ -86,6 +87,9 @@ Write a first-draft answer to this question using only the facts in the student 
 }
 
 export async function POST(req: NextRequest) {
+  const blocked = await checkRateLimit(req, "draft-answer");
+  if (blocked) return blocked;
+
   let body: unknown;
   try {
     body = await req.json();

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { callClaude } from "@/lib/claudeClient";
+import { checkRateLimit } from "@/lib/rateLimit";
 
 const TranslateRequestSchema = z.object({
   text: z
@@ -17,6 +18,9 @@ const LANG_NAMES: Record<string, string> = {
 };
 
 export async function POST(req: NextRequest) {
+  const blocked = await checkRateLimit(req, "translate");
+  if (blocked) return blocked;
+
   let body: unknown;
   try {
     body = await req.json();
