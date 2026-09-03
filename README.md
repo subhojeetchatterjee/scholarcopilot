@@ -1,5 +1,7 @@
 # ScholarCopilot
 
+Live Website ---> https://scholarcopilot.vercel.app/
+
 ScholarCopilot helps Indian students discover scholarships they are actually likely to qualify for. It combines structured profile collection, rule-based scholarship matching, and AI-assisted guidance to make scholarship discovery clearer, faster, and safer.
 
 ## What it does
